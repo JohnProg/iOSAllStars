@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5E495E481CB5AFB000E5A4D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E495E471CB5AFB000E5A4D9 /* AppDelegate.swift */; };
-		5E495E4A1CB5AFB000E5A4D9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E495E491CB5AFB000E5A4D9 /* FirstViewController.swift */; };
-		5E495E4C1CB5AFB000E5A4D9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E495E4B1CB5AFB000E5A4D9 /* SecondViewController.swift */; };
 		5E495E4F1CB5AFB000E5A4D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E495E4D1CB5AFB000E5A4D9 /* Main.storyboard */; };
 		5E495E511CB5AFB000E5A4D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E495E501CB5AFB000E5A4D9 /* Assets.xcassets */; };
 		5E495E541CB5AFB000E5A4D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E495E521CB5AFB000E5A4D9 /* LaunchScreen.storyboard */; };
 		5E495E5F1CB5AFB000E5A4D9 /* AllStarsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E495E5E1CB5AFB000E5A4D9 /* AllStarsTests.swift */; };
 		5E495E6A1CB5AFB100E5A4D9 /* AllStarsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E495E691CB5AFB100E5A4D9 /* AllStarsUITests.swift */; };
+		5E7BAD7F1CB5B58000AE3361 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7BAD7D1CB5B58000AE3361 /* FirstViewController.swift */; };
+		5E7BAD801CB5B58000AE3361 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7BAD7E1CB5B58000AE3361 /* SecondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +37,6 @@
 /* Begin PBXFileReference section */
 		5E495E441CB5AFB000E5A4D9 /* AllStars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllStars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E495E471CB5AFB000E5A4D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5E495E491CB5AFB000E5A4D9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		5E495E4B1CB5AFB000E5A4D9 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		5E495E4E1CB5AFB000E5A4D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E495E501CB5AFB000E5A4D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E495E531CB5AFB000E5A4D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +47,8 @@
 		5E495E651CB5AFB000E5A4D9 /* AllStarsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllStarsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E495E691CB5AFB100E5A4D9 /* AllStarsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStarsUITests.swift; sourceTree = "<group>"; };
 		5E495E6B1CB5AFB100E5A4D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E7BAD7D1CB5B58000AE3361 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirstViewController.swift; path = ViewController/FirstViewController.swift; sourceTree = "<group>"; };
+		5E7BAD7E1CB5B58000AE3361 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondViewController.swift; path = ViewController/SecondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +99,8 @@
 		5E495E461CB5AFB000E5A4D9 /* AllStars */ = {
 			isa = PBXGroup;
 			children = (
+				5E7BAD7C1CB5B57100AE3361 /* ViewController */,
 				5E495E471CB5AFB000E5A4D9 /* AppDelegate.swift */,
-				5E495E491CB5AFB000E5A4D9 /* FirstViewController.swift */,
-				5E495E4B1CB5AFB000E5A4D9 /* SecondViewController.swift */,
 				5E495E4D1CB5AFB000E5A4D9 /* Main.storyboard */,
 				5E495E501CB5AFB000E5A4D9 /* Assets.xcassets */,
 				5E495E521CB5AFB000E5A4D9 /* LaunchScreen.storyboard */,
@@ -126,6 +125,15 @@
 				5E495E6B1CB5AFB100E5A4D9 /* Info.plist */,
 			);
 			path = AllStarsUITests;
+			sourceTree = "<group>";
+		};
+		5E7BAD7C1CB5B57100AE3361 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5E7BAD7D1CB5B58000AE3361 /* FirstViewController.swift */,
+				5E7BAD7E1CB5B58000AE3361 /* SecondViewController.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,9 +270,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E495E4C1CB5AFB000E5A4D9 /* SecondViewController.swift in Sources */,
+				5E7BAD801CB5B58000AE3361 /* SecondViewController.swift in Sources */,
 				5E495E481CB5AFB000E5A4D9 /* AppDelegate.swift in Sources */,
-				5E495E4A1CB5AFB000E5A4D9 /* FirstViewController.swift in Sources */,
+				5E7BAD7F1CB5B58000AE3361 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +499,7 @@
 				5E495E701CB5AFB100E5A4D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5E495E711CB5AFB100E5A4D9 /* Build configuration list for PBXNativeTarget "AllStarsTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +508,7 @@
 				5E495E731CB5AFB100E5A4D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5E495E741CB5AFB100E5A4D9 /* Build configuration list for PBXNativeTarget "AllStarsUITests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +517,7 @@
 				5E495E761CB5AFB100E5A4D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
