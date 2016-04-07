@@ -7,12 +7,93 @@
 //
 
 import UIKit
+import SnapKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    
+    let usernameTag = 100
+    let passwordTag = 101
+    
+    var usernameEntered = false {
+        didSet {
+            enableLoginButton()
+        }
+    }
+    
+    var passwordEntered = false {
+        didSet {
+            enableLoginButton()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Login"
+        
         view.backgroundColor = Utils.mainColor
+        setupViews()
+        setupLoginButton()
+        loginButton.enabled = false
+    }
+
+    let offset = 15
+    let textfieldHeight = 30
+    
+    func setupViews() {
+        usernameTextField.tag = usernameTag
+        passwordTextField.tag = passwordTag
+        setupTextField(usernameTextField)
+        setupTextField(passwordTextField)
+
+    }
+    
+    func setupTextField(textfield : UITextField) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 20))
+        textfield.leftView = paddingView
+        textfield.leftViewMode = .Always
+        
+        textfield.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
+       
+        textfield.layer.borderWidth = 0.5
+        textfield.layer.borderColor = UIColor.whiteColor().CGColor
+        textfield.layer.cornerRadius = 3
+        textfield.clipsToBounds = true
+
+        textfield.textColor = .whiteColor()
+        
+        textfield.addTarget(self, action: "textDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+    }
+    
+    func textDidChange(textfield : UITextField) {
+        switch textfield.tag {
+        case usernameTag :
+            usernameEntered = textfield.text?.characters.count > 0
+        case passwordTag :
+            passwordEntered = textfield.text?.characters.count > 0
+        default :
+            // do nothing
+            return
+        }
+    }
+    
+    func enableLoginButton() {
+        loginButton.enabled = usernameEntered && passwordEntered
+    }
+    
+    func setupLoginButton() {
+        loginButton.tintColor = .whiteColor()
+        loginButton.layer.borderColor = UIColor.whiteColor().CGColor
+        loginButton.layer.borderWidth = 0.5
+        loginButton.layer.cornerRadius = 3
+        loginButton.clipsToBounds = true
+
+    }
+    @IBAction func loginButtonAction(sender: AnyObject) {
+        //do login stuff
+        performSegueWithIdentifier("login", sender: nil)
     }
 }

@@ -11,4 +11,9 @@ import UIKit
 class Utils: NSObject {
 
     static let mainColor = UIColor(red: 1.0, green: 0.6, blue: 0.2, alpha: 1.0)
+    
+    class func loginScreen() -> UIViewController? {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        return storyboard.instantiateViewControllerWithIdentifier("login")
+    }
 }

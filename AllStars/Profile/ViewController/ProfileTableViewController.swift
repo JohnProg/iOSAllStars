@@ -13,8 +13,16 @@ class ProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableHeaderView = tableHeader()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Done, target: self, action: "logout")
     }
 
+    func logout() {
+        guard let loginScreen = Utils.loginScreen() else {
+            return
+        }
+        self.presentViewController(loginScreen, animated: true, completion: nil)
+    }
+    
     var tableViewHeaderHeight : CGFloat {
         get {
             return self.tableView.frame.width / 2
