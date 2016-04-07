@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="6zb-M8-NlE">
             <objects>
-                <viewController id="MHA-om-GhU" sceneMemberID="viewController">
+                <viewController id="MHA-om-GhU" customClass="LoginViewController" customModule="AllStars" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ufv-Sm-yxd"/>
                         <viewControllerLayoutGuide type="bottom" id="LIx-F1-Exq"/>
@@ -62,6 +62,7 @@
                             <constraint firstItem="9Sx-M1-XNO" firstAttribute="centerX" secondItem="0wn-BA-mZH" secondAttribute="centerX" id="QsH-Py-I09"/>
                         </constraints>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bld-sr-6pY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
