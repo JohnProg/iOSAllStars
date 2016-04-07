@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -66,6 +66,8 @@ class LoginViewController: UIViewController {
         textfield.textColor = .whiteColor()
         
         textfield.addTarget(self, action: "textDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        
+        textfield.delegate = self
     }
     
     func textDidChange(textfield : UITextField) {
@@ -78,6 +80,7 @@ class LoginViewController: UIViewController {
             // do nothing
             return
         }
+ 
     }
     
     func enableLoginButton() {
@@ -95,5 +98,25 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonAction(sender: AnyObject) {
         //do login stuff
         performSegueWithIdentifier("login", sender: nil)
+    }
+
+    //MARK: UITextFieldDelegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        switch textField.tag {
+        case usernameTag :
+            usernameTextField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        case passwordTag :
+            passwordTextField.resignFirstResponder()
+            if loginButton.enabled {
+                loginButtonAction(self)
+            } else {
+                usernameTextField.becomeFirstResponder()
+            }
+        default :
+            // do nothing
+            break
+        }
+        return true
     }
 }
