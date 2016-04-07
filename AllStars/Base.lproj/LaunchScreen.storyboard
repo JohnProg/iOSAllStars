@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,13 +16,54 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Belatrix-logo" translatesAutoresizingMaskIntoConstraints="NO" id="4Og-RA-U5D">
+                                <rect key="frame" x="124" y="229" width="353" height="141"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="0VK-oH-ckO"/>
+                                    <constraint firstAttribute="height" constant="100" id="jTk-5a-u7u"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0VK-oH-ckO"/>
+                                        <exclude reference="jTk-5a-u7u"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="0VK-oH-ckO"/>
+                                        <include reference="jTk-5a-u7u"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4Og-RA-U5D" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7Nx-l2-8rM"/>
+                            <constraint firstItem="4Og-RA-U5D" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="bPi-fY-O99"/>
+                            <constraint firstItem="4Og-RA-U5D" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ckh-Wh-L3j"/>
+                            <constraint firstItem="4Og-RA-U5D" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="suP-bg-766"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7Nx-l2-8rM"/>
+                                <exclude reference="ckh-Wh-L3j"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="7Nx-l2-8rM"/>
+                                <include reference="ckh-Wh-L3j"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.5" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Belatrix-logo" width="4179" height="719"/>
+    </resources>
 </document>
