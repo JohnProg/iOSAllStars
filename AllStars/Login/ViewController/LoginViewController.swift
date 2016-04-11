@@ -97,7 +97,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func loginButtonAction(sender: AnyObject) {
         //do login stuff
-        performSegueWithIdentifier("login", sender: nil)
+        self.showLoadingIndicator()
+        guard let username = usernameTextField.text, password = passwordTextField.text else {
+            return
+        }
+        
+        LoginService.login(username, password: password) { (user : AnyObject?, error : NSError?) -> Void in
+            self.hideLoadingIndicator()
+            if error == nil {
+                self.performSegueWithIdentifier("login", sender: nil)
+            } else {
+                print("error")
+            }
+            
+        }
+        
     }
 
     //MARK: UITextFieldDelegate
