@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3CF89EEA1CC1771900BD9CD2 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF89EE91CC1771900BD9CD2 /* KeychainWrapper.swift */; };
+		3CF89EEC1CC1829200BD9CD2 /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF89EEB1CC1829200BD9CD2 /* SearchCollectionViewController.swift */; };
+		3CF89EEE1CC1833600BD9CD2 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF89EED1CC1833600BD9CD2 /* UserCollectionViewCell.swift */; };
 		5E0857051CB6B6A400AFDD24 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0857041CB6B6A400AFDD24 /* Profile.storyboard */; };
 		5E0857081CB6B73700AFDD24 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0857061CB6B73700AFDD24 /* ProfileTableViewController.swift */; };
 		5E08570F1CB6B83F00AFDD24 /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E08570E1CB6B83F00AFDD24 /* Ranking.storyboard */; };
@@ -49,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		3CF89EE91CC1771900BD9CD2 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainWrapper.swift; path = Extra/KeychainWrapper.swift; sourceTree = "<group>"; };
+		3CF89EEB1CC1829200BD9CD2 /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCollectionViewController.swift; path = Search/ViewController/SearchCollectionViewController.swift; sourceTree = "<group>"; };
+		3CF89EED1CC1833600BD9CD2 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserCollectionViewCell.swift; path = Search/View/UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		53746F13D1F8D8ADD825DB2D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5E0857041CB6B6A400AFDD24 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = Profile/Profile.storyboard; sourceTree = "<group>"; };
 		5E0857061CB6B73700AFDD24 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTableViewController.swift; path = Profile/ViewController/ProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				5E5FCC831CBC04B70005501F /* SearchTableViewController.swift */,
+				3CF89EEB1CC1829200BD9CD2 /* SearchCollectionViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				5E5FCC861CBC0AA40005501F /* UserTableViewCell.swift */,
+				3CF89EED1CC1833600BD9CD2 /* UserCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -501,11 +507,13 @@
 				5E5FCC871CBC0AA40005501F /* UserTableViewCell.swift in Sources */,
 				5E5FCC7F1CBC03A90005501F /* UserService.swift in Sources */,
 				5E0857081CB6B73700AFDD24 /* ProfileTableViewController.swift in Sources */,
+				3CF89EEE1CC1833600BD9CD2 /* UserCollectionViewCell.swift in Sources */,
 				5E495E481CB5AFB000E5A4D9 /* AppDelegate.swift in Sources */,
 				5E5FCC7D1CBC038B0005501F /* User.swift in Sources */,
 				5E5FCC751CBBFD200005501F /* UIViewController+LoadingIndicatorView.swift in Sources */,
 				5E5FCC841CBC04B70005501F /* SearchTableViewController.swift in Sources */,
 				3CF89EEA1CC1771900BD9CD2 /* KeychainWrapper.swift in Sources */,
+				3CF89EEC1CC1829200BD9CD2 /* SearchCollectionViewController.swift in Sources */,
 				5E20356A1CBBEFF10019DABE /* BaseService.swift in Sources */,
 				5E0857131CB6BACF00AFDD24 /* Utils.swift in Sources */,
 			);

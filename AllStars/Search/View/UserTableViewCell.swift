@@ -3,7 +3,7 @@
 //  AllStars
 //
 //  Created by Rodrigo Gonzalez on 4/11/16.
-//  Copyright © 2016 Belatrix. All rights reserved.
+//  Copyright © 2016 Rodrigo Gonzalez. All rights reserved.
 //
 
 import UIKit

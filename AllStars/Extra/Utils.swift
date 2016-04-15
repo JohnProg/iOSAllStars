@@ -34,4 +34,13 @@ class Utils: NSObject {
         KeychainWrapper.removeObjectForKey(Utils.tokenKey)
         KeychainWrapper.removeObjectForKey(Utils.userIdKey)
     }
+    
+    class func getNameInitials(name : String) -> String {
+        let firstName: String = name.componentsSeparatedByString(" ").first!.uppercaseString as String
+        let secondName: String = name.componentsSeparatedByString(" ")[1].uppercaseString as String
+        
+        let initials = "\(firstName[firstName.startIndex])" + "\(secondName[secondName.startIndex])"
+        
+        return initials
+    }
 }
