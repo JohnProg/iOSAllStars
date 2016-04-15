@@ -14,12 +14,14 @@ class ProfileTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.tableHeaderView = tableHeader()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Done, target: self, action: "logout")
+        
     }
 
     func logout() {
         guard let loginScreen = Utils.loginScreen() else {
             return
         }
+        Utils.cleanSession()
         self.presentViewController(loginScreen, animated: true, completion: nil)
     }
     

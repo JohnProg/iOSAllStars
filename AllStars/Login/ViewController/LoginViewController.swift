@@ -101,17 +101,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         guard let username = usernameTextField.text, password = passwordTextField.text else {
             return
         }
-        
-        LoginService.login(username, password: password) { (user : AnyObject?, error : NSError?) -> Void in
+
+        LoginService.login(username, password: password) { (response : AnyObject?, error : NSError?) -> Void in
             self.hideLoadingIndicator()
-            if error == nil {
+            
+            if error != nil {
+                print("error")
+            } else if let token = (response as? NSDictionary)!["token"] as? String, let userId = (response as? NSDictionary)!["user_id"] as? UInt {
+                
+                Utils.save(token, key: Utils.tokenKey)
+                Utils.save(String(userId), key: Utils.userIdKey)
                 self.performSegueWithIdentifier("login", sender: nil)
             } else {
                 print("error")
             }
-            
         }
-        
     }
 
     //MARK: UITextFieldDelegate
