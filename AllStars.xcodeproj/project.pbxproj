@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3CF89EEA1CC1771900BD9CD2 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF89EE91CC1771900BD9CD2 /* KeychainWrapper.swift */; };
-		3CF89EEC1CC1829200BD9CD2 /* SearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF89EEB1CC1829200BD9CD2 /* SearchCollectionViewController.swift */; };
-		3CF89EEE1CC1833600BD9CD2 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF89EED1CC1833600BD9CD2 /* UserCollectionViewCell.swift */; };
 		5E0857051CB6B6A400AFDD24 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0857041CB6B6A400AFDD24 /* Profile.storyboard */; };
 		5E0857081CB6B73700AFDD24 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0857061CB6B73700AFDD24 /* ProfileTableViewController.swift */; };
 		5E08570F1CB6B83F00AFDD24 /* Ranking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E08570E1CB6B83F00AFDD24 /* Ranking.storyboard */; };
@@ -27,8 +25,13 @@
 		5E5FCC7D1CBC038B0005501F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FCC7C1CBC038B0005501F /* User.swift */; };
 		5E5FCC7F1CBC03A90005501F /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FCC7E1CBC03A90005501F /* UserService.swift */; };
 		5E5FCC821CBC04950005501F /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E5FCC811CBC04950005501F /* Search.storyboard */; };
-		5E5FCC841CBC04B70005501F /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FCC831CBC04B70005501F /* SearchTableViewController.swift */; };
-		5E5FCC871CBC0AA40005501F /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FCC861CBC0AA40005501F /* UserTableViewCell.swift */; };
+		5EE334CA1CCFCEBF00006D70 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE334C41CCFCEBF00006D70 /* Contact.swift */; };
+		5EE334CB1CCFCEBF00006D70 /* ContactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EE334C51CCFCEBF00006D70 /* ContactCell.xib */; };
+		5EE334CC1CCFCEBF00006D70 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE334C61CCFCEBF00006D70 /* ContactsViewController.swift */; };
+		5EE334CD1CCFCEBF00006D70 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE334C71CCFCEBF00006D70 /* ContactTableViewCell.swift */; };
+		5EE334CE1CCFCEBF00006D70 /* ContactUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE334C81CCFCEBF00006D70 /* ContactUtils.swift */; };
+		5EE334CF1CCFCEBF00006D70 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE334C91CCFCEBF00006D70 /* ImageLoader.swift */; };
+		5EE334D21CCFD01000006D70 /* SearchContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE334D11CCFD01000006D70 /* SearchContactsViewController.swift */; };
 		E68911A22F3009CCE1BA36BD /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE28D5EB2F61DD77C0E1530 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,8 +54,6 @@
 
 /* Begin PBXFileReference section */
 		3CF89EE91CC1771900BD9CD2 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainWrapper.swift; path = Extra/KeychainWrapper.swift; sourceTree = "<group>"; };
-		3CF89EEB1CC1829200BD9CD2 /* SearchCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCollectionViewController.swift; path = Search/ViewController/SearchCollectionViewController.swift; sourceTree = "<group>"; };
-		3CF89EED1CC1833600BD9CD2 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserCollectionViewCell.swift; path = Search/View/UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		53746F13D1F8D8ADD825DB2D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5E0857041CB6B6A400AFDD24 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = Profile/Profile.storyboard; sourceTree = "<group>"; };
 		5E0857061CB6B73700AFDD24 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTableViewController.swift; path = Profile/ViewController/ProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -77,8 +78,13 @@
 		5E5FCC7C1CBC038B0005501F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = User/Model/User.swift; sourceTree = "<group>"; };
 		5E5FCC7E1CBC03A90005501F /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserService.swift; path = User/Service/UserService.swift; sourceTree = "<group>"; };
 		5E5FCC811CBC04950005501F /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Search.storyboard; path = Search/Search.storyboard; sourceTree = "<group>"; };
-		5E5FCC831CBC04B70005501F /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTableViewController.swift; path = Search/ViewController/SearchTableViewController.swift; sourceTree = "<group>"; };
-		5E5FCC861CBC0AA40005501F /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserTableViewCell.swift; path = Search/View/UserTableViewCell.swift; sourceTree = "<group>"; };
+		5EE334C41CCFCEBF00006D70 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = Search/Contacts/Contact.swift; sourceTree = "<group>"; };
+		5EE334C51CCFCEBF00006D70 /* ContactCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactCell.xib; path = Search/Contacts/ContactCell.xib; sourceTree = "<group>"; };
+		5EE334C61CCFCEBF00006D70 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactsViewController.swift; path = Search/Contacts/ContactsViewController.swift; sourceTree = "<group>"; };
+		5EE334C71CCFCEBF00006D70 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactTableViewCell.swift; path = Search/Contacts/ContactTableViewCell.swift; sourceTree = "<group>"; };
+		5EE334C81CCFCEBF00006D70 /* ContactUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactUtils.swift; path = Search/Contacts/ContactUtils.swift; sourceTree = "<group>"; };
+		5EE334C91CCFCEBF00006D70 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = Search/Contacts/ImageLoader.swift; sourceTree = "<group>"; };
+		5EE334D11CCFD01000006D70 /* SearchContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchContactsViewController.swift; path = Search/ViewController/SearchContactsViewController.swift; sourceTree = "<group>"; };
 		7EE28D5EB2F61DD77C0E1530 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E46D4797074A198EBAA0122 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,8 +127,8 @@
 		5E08570A1CB6B76600AFDD24 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				5EE334C31CCFCE8E00006D70 /* Contacts */,
 				5E5FCC811CBC04950005501F /* Search.storyboard */,
-				5E5FCC851CBC0A850005501F /* View */,
 				5E5FCC801CBC04660005501F /* ViewController */,
 			);
 			name = Search;
@@ -266,19 +272,9 @@
 		5E5FCC801CBC04660005501F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5E5FCC831CBC04B70005501F /* SearchTableViewController.swift */,
-				3CF89EEB1CC1829200BD9CD2 /* SearchCollectionViewController.swift */,
+				5EE334D11CCFD01000006D70 /* SearchContactsViewController.swift */,
 			);
 			name = ViewController;
-			sourceTree = "<group>";
-		};
-		5E5FCC851CBC0A850005501F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				5E5FCC861CBC0AA40005501F /* UserTableViewCell.swift */,
-				3CF89EED1CC1833600BD9CD2 /* UserCollectionViewCell.swift */,
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		5E7BAD7C1CB5B57100AE3361 /* ViewController */ = {
@@ -304,6 +300,19 @@
 			children = (
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		5EE334C31CCFCE8E00006D70 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				5EE334C41CCFCEBF00006D70 /* Contact.swift */,
+				5EE334C51CCFCEBF00006D70 /* ContactCell.xib */,
+				5EE334C61CCFCEBF00006D70 /* ContactsViewController.swift */,
+				5EE334C71CCFCEBF00006D70 /* ContactTableViewCell.swift */,
+				5EE334C81CCFCEBF00006D70 /* ContactUtils.swift */,
+				5EE334C91CCFCEBF00006D70 /* ImageLoader.swift */,
+			);
+			name = Contacts;
 			sourceTree = "<group>";
 		};
 		9A7FBB05B6975F22DD5940C3 /* Frameworks */ = {
@@ -430,6 +439,7 @@
 				5E0857051CB6B6A400AFDD24 /* Profile.storyboard in Resources */,
 				5E5FCC821CBC04950005501F /* Search.storyboard in Resources */,
 				5E495E4F1CB5AFB000E5A4D9 /* Main.storyboard in Resources */,
+				5EE334CB1CCFCEBF00006D70 /* ContactCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,18 +514,20 @@
 			files = (
 				5E0857171CB6BB1B00AFDD24 /* LoginViewController.swift in Sources */,
 				5E5FCC731CBBF6DE0005501F /* LoginService.swift in Sources */,
-				5E5FCC871CBC0AA40005501F /* UserTableViewCell.swift in Sources */,
 				5E5FCC7F1CBC03A90005501F /* UserService.swift in Sources */,
 				5E0857081CB6B73700AFDD24 /* ProfileTableViewController.swift in Sources */,
-				3CF89EEE1CC1833600BD9CD2 /* UserCollectionViewCell.swift in Sources */,
+				5EE334CC1CCFCEBF00006D70 /* ContactsViewController.swift in Sources */,
 				5E495E481CB5AFB000E5A4D9 /* AppDelegate.swift in Sources */,
 				5E5FCC7D1CBC038B0005501F /* User.swift in Sources */,
+				5EE334CF1CCFCEBF00006D70 /* ImageLoader.swift in Sources */,
 				5E5FCC751CBBFD200005501F /* UIViewController+LoadingIndicatorView.swift in Sources */,
-				5E5FCC841CBC04B70005501F /* SearchTableViewController.swift in Sources */,
 				3CF89EEA1CC1771900BD9CD2 /* KeychainWrapper.swift in Sources */,
-				3CF89EEC1CC1829200BD9CD2 /* SearchCollectionViewController.swift in Sources */,
+				5EE334D21CCFD01000006D70 /* SearchContactsViewController.swift in Sources */,
+				5EE334CA1CCFCEBF00006D70 /* Contact.swift in Sources */,
+				5EE334CE1CCFCEBF00006D70 /* ContactUtils.swift in Sources */,
 				5E20356A1CBBEFF10019DABE /* BaseService.swift in Sources */,
 				5E0857131CB6BACF00AFDD24 /* Utils.swift in Sources */,
+				5EE334CD1CCFCEBF00006D70 /* ContactTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

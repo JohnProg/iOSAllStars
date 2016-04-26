@@ -10,11 +10,30 @@ import UIKit
 
 class ProfileTableViewController: UITableViewController {
 
+    var user : Contact? {
+        didSet {
+            tableView.tableHeaderView = tableHeader()
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableHeaderView = tableHeader()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Done, target: self, action: "logout")
         
+        if user == nil {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Done, target: self, action: #selector(logout))
+            
+            // get logged user
+            let userId = Utils.load(Utils.userIdKey)
+            
+            showLoadingIndicator()
+            UserService.employee(userId, onCompletition: { (user : User?, error : NSError?) in
+                self.user = user
+                self.hideLoadingIndicator()
+            })
+        } else {
+            // show + icon
+        }
     }
 
     func logout() {
@@ -60,7 +79,7 @@ class ProfileTableViewController: UITableViewController {
         
         let profileName = UILabel()
         
-        profileName.text = "Mario"
+        profileName.text = user!.displayName()
         
         profileName.backgroundColor = .clearColor()
 
@@ -74,7 +93,7 @@ class ProfileTableViewController: UITableViewController {
 
         headerView.addSubview(profileIconView)
         headerView.addSubview(profileName)
-
+        
         headerView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.5)
         return headerView
     }

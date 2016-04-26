@@ -8,12 +8,10 @@
 
 import UIKit
 
-class User {
+class User : Contact {
     var pk : UInt?
     var username : String?
     var email : String?
-    var firstName : String?
-    var lastName : String?
     var level : UInt?
     var avatar : String?
     var score : UInt?
@@ -25,13 +23,26 @@ class User {
     var isActive : Bool = true
     var lastLogin : String?
     
+    override var detail: String {
+        set {}
+        get {
+            if email != nil {
+                return email!
+            }
+            if skypeId != nil {
+                return skypeId!
+            }
+            
+            return ""
+        }
+    }
     convenience init(pk : UInt?, username : String?, email : String?, firstName : String?, lastName : String?, level : UInt, avatar : String?, score : UInt?, role : String?, skypeId : String?, lastMonthScore : String?, currentMonthScore : String?, categories : Array<AnyObject>?, isActive : Bool, lastLogin : String?) {
         self.init()
         self.pk = pk
         self.username = username
         self.email = email
-        self.firstName = firstName
-        self.lastName = lastName
+        self.firstName = firstName != nil ? firstName! : ""
+        self.lastName = lastName != nil ? lastName! : ""
         self.level = level
         self.avatar = avatar
         self.score = score
@@ -70,8 +81,14 @@ extension User {
         user.pk = json[Keys.pk] as? UInt
         user.username = json[Keys.username] as? String
         user.email = json[Keys.email] as? String
-        user.firstName = json[Keys.firstName] as? String
-        user.lastName = json[Keys.lastName] as? String
+        
+        if let firstName = json[Keys.firstName] as? String {
+            user.firstName = firstName
+        }
+        
+        if let lastName = json[Keys.lastName] as? String {
+            user.lastName = lastName
+        }
         user.level = json[Keys.level] as? UInt
         user.avatar = json[Keys.avatar] as? String
         user.score = json[Keys.score] as? UInt
