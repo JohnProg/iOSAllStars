@@ -2,13 +2,13 @@
 //  Constants.swift
 //  AllStars
 //
-//  Created by Gianfranco Yosida on 4/26/16.
+//  Created by Gianfranco Yosida on 4/22/16.
 //  Copyright © 2016 Belatrix. All rights reserved.
 //
 
 import Foundation
 
-class Constants {
+struct Constants {
     
     struct JSONBodyKeys {
         static let category = "category"

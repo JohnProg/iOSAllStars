@@ -33,11 +33,8 @@ class ProfileTableViewController: UITableViewController {
                 self.hideLoadingIndicator()
             })
         } else {
-            // show + icon
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(giveStar))
         }
-        tableView.tableHeaderView = tableHeader()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Done, target: self, action: "logout")
-        //TODO hide Add bar button item if profile is from the logged in user
     }
 
     func logout() {
@@ -102,12 +99,11 @@ class ProfileTableViewController: UITableViewController {
         return headerView
     }
     
-    @IBAction func starPressed(sender: UIBarButtonItem) {
+    func giveStar() {
         let storyboard = UIStoryboard(name: "Stars", bundle: nil)
         let starNavigationVC = storyboard.instantiateViewControllerWithIdentifier(ProfileTableViewController.starVC) as! UINavigationController
-//      TODO: pass the user who will receive the star
-//      let giveStarVC = starNavigationVC.childViewControllers.first as! GiveStarTableViewController
-//      giveStarVC.user = ???
+        let giveStarVC = starNavigationVC.childViewControllers.first as! GiveStarTableViewController
+        giveStarVC.user = user as! User
         presentViewController(starNavigationVC, animated: true, completion: nil)
     }
     

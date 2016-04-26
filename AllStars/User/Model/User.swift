@@ -56,14 +56,7 @@ class User : Contact {
     }
     
     func getFullName() -> String {
-        var fullName = ""
-        if let firstName = firstName {
-            fullName += firstName + " "
-        }
-        if let lastName = lastName {
-            fullName += lastName
-        }
-        return fullName
+        return firstName + " " + lastName
     }
 }
 

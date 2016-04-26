@@ -57,8 +57,7 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
     
     private func initViews() {
         navigationItem.title = "Recommendation"
-//      TODO: set the label with the user reference. user.getFullName()
-        userNameLabel.text = "Mario"
+        userNameLabel.text = user.getFullName()
         doneBarButtonItem.enabled = false
     }
     
@@ -98,9 +97,7 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
     
     @IBAction func donePressed(sender: UIBarButtonItem) {
         showLoadingIndicator()
-//      TODO: get the pk from the user who will receive the star. user.pk!
-        let toUserId: UInt = 2
-        StarService.giveStar(loggedInUserPk, toId: toUserId, subcategory: subcategory!, comment: comment, onCompletion: { (star, error) in
+        StarService.giveStar(loggedInUserPk, toId: user.pk!, subcategory: subcategory!, comment: comment, onCompletion: { (star, error) in
             self.hideLoadingIndicator()
             if error == nil {
                 self.dismissViewControllerAnimated(true, completion: nil)
