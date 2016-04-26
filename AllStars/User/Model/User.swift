@@ -54,6 +54,7 @@ class User : Contact {
         self.isActive = isActive
         self.lastLogin = lastLogin
     }
+    
 }
 
 //MARK: JSON Parsing
