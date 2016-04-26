@@ -57,7 +57,7 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
     
     private func initViews() {
         navigationItem.title = "Recommendation"
-        userNameLabel.text = user.getFullName()
+        userNameLabel.text = user.displayName()
         doneBarButtonItem.enabled = false
     }
     

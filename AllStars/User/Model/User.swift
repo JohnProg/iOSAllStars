@@ -55,9 +55,6 @@ class User : Contact {
         self.lastLogin = lastLogin
     }
     
-    func getFullName() -> String {
-        return firstName + " " + lastName
-    }
 }
 
 //MARK: JSON Parsing
