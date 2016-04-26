@@ -115,8 +115,10 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
         switch indexPath.item {
         case 1:
             performSegueWithIdentifier(GiveStarTableViewController.commentSegue, sender: nil)
-        default:
+        case 2:
             fetchAndDisplayCategories()
+        default:
+            break
         }
     }
     
