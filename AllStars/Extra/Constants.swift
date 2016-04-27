@@ -17,7 +17,7 @@ struct Constants {
     }
     
     struct Methods {
-        static let recommend = "/api/star/{\(PathSegmentKeys.fromEmployee)}/give/star/to/{\(PathSegmentKeys.toEmployee)}"
+        static let recommend = "/api/star/{\(PathSegmentKeys.fromEmployee)}/give/star/to/{\(PathSegmentKeys.toEmployee)}/"
         static let subcategoryList = "/api/category/{\(PathSegmentKeys.categoryId)}/subcategory/list"
         static let employeeCategoryList = "/api/employee/{\(PathSegmentKeys.employeeId)}/category/list"
     }
