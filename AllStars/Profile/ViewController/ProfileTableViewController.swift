@@ -9,6 +9,8 @@
 import UIKit
 
 class ProfileTableViewController: UITableViewController {
+    
+    static let starVC = "starVC"
 
     var user : Contact? {
         didSet {
@@ -18,8 +20,7 @@ class ProfileTableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()        
         if user == nil {
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Done, target: self, action: #selector(logout))
             
@@ -32,7 +33,7 @@ class ProfileTableViewController: UITableViewController {
                 self.hideLoadingIndicator()
             })
         } else {
-            // show + icon
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(giveStar))
         }
     }
 
@@ -96,6 +97,14 @@ class ProfileTableViewController: UITableViewController {
         
         headerView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.5)
         return headerView
+    }
+    
+    func giveStar() {
+        let storyboard = UIStoryboard(name: "Stars", bundle: nil)
+        let starNavigationVC = storyboard.instantiateViewControllerWithIdentifier(ProfileTableViewController.starVC) as! UINavigationController
+        let giveStarVC = starNavigationVC.childViewControllers.first as! GiveStarTableViewController
+        giveStarVC.user = user as! User
+        presentViewController(starNavigationVC, animated: true, completion: nil)
     }
     
     // MARK: - Table view data source

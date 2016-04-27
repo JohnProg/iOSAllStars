@@ -32,26 +32,50 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        edgesForExtendedLayout = .None
         navigationItem.title = "Login"
         
         view.backgroundColor = Utils.mainColor
         setupViews()
         setupLoginButton()
         loginButton.enabled = false
+        
+        usernameTextField.becomeFirstResponder()
     }
 
     let offset = 15
-    let textfieldHeight = 30
+    let textFieldHeight = 45
     
     func setupViews() {
         usernameTextField.tag = usernameTag
         passwordTextField.tag = passwordTag
         setupTextField(usernameTextField)
         setupTextField(passwordTextField)
+        
+        usernameTextField.snp_makeConstraints { (make) in
+            make.top.equalTo(self.view.snp_top).offset(offset)
+            make.left.equalTo(self.view.snp_left).offset(offset)
+            make.right.equalTo(self.view.snp_right).offset(-offset)
+            make.height.equalTo(textFieldHeight)
+        }
+        
+        passwordTextField.snp_makeConstraints { (make) in
+            make.top.equalTo(usernameTextField.snp_bottom).offset(offset)
+            make.left.equalTo(self.view.snp_left).offset(offset)
+            make.right.equalTo(self.view.snp_right).offset(-offset)
+            make.height.equalTo(textFieldHeight)
+        }
+        
+        loginButton.snp_makeConstraints { (make) in
+            make.top.equalTo(passwordTextField.snp_bottom).offset(offset)
+            make.left.equalTo(self.view.snp_left).offset(offset)
+            make.right.equalTo(self.view.snp_right).offset(-offset)
+            make.height.equalTo(textFieldHeight)
+        }
     }
     
     func setupTextField(textfield : UITextField) {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 20))
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
         textfield.leftView = paddingView
         textfield.leftViewMode = .Always
         
@@ -79,7 +103,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             // do nothing
             return
         }
- 
     }
     
     func enableLoginButton() {

@@ -6,10 +6,11 @@
 //  Copyright © 2016 Belatrix. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 typealias UserListServiceResponse = (Array<User>?, NSError?) -> Void
 typealias UserServiceResponse = (User?, NSError?) -> Void
+typealias UserCategoriesList = (categories: [Category]?, error: NSError?) -> Void
 
 class UserService: BaseService {
 
@@ -30,6 +31,18 @@ class UserService: BaseService {
         }
         
     }
+    
+    class func getEmployeeCategoryList(employeePk: UInt, onCompletion: UserCategoriesList) {
+        let fullPath = BaseService.subtituteKeyInMethod(Constants.Methods.employeeCategoryList, pathSegment: (key: Constants.PathSegmentKeys.employeeId, value: String(employeePk)))
+        BaseService.makeRequest(fullPath, method: .GET, parameters: nil) { (json: AnyObject?, error: NSError?) in
+            if error == nil {
+                let employeeCategories = Category.parseCategories(json as! [[String: AnyObject]])
+                onCompletion(categories: employeeCategories, error: nil)
+            } else {
+                onCompletion(categories: nil, error: error)
+            }
+        }
+    }
 
     private static let employeeIdEndpoint = "/api/employee/"
     
@@ -45,6 +58,39 @@ class UserService: BaseService {
                 }
                 onCompletition(User.parseJSON(jsonUser),nil)
             }
+        }
+    }
+    
+    private static let employeeTopList = "/api/employee/list/top/"
+    
+    enum TopKind : String {
+        case Score, Level, LastMonthScore, CurrentMonthScore
+    }
+    
+    class func employeeTopList(kind : TopKind, quantity : String, onCompletition : UserListServiceResponse) {
+        var kindString = ""
+        
+        switch kind {
+        case .Level:
+            kindString = "level"
+        case .LastMonthScore:
+            kindString = "last_month_score"
+        case .CurrentMonthScore:
+            kindString = "current_month_score"
+        default:
+            kindString = "score"
+        }
+        
+        let employeeTopListURL = employeeTopList + kindString + "/" + quantity + "/"
+        makeRequest(employeeTopListURL, method: .GET, parameters: nil) { (json : AnyObject?, error :NSError?) in
+            if error != nil {
+                onCompletition(nil, error)
+            }
+            guard let jsonUsers = json as? Array<NSDictionary> else {
+                return
+            }
+            
+            onCompletition(User.parseUsers(jsonUsers),nil)
         }
     }
 }
