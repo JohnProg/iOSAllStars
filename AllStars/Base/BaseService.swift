@@ -23,15 +23,26 @@ class BaseService {
         
         let endpoint = allStarsURL + safeEndpoint
         
-        Alamofire.request(method, endpoint, parameters: parameters)
+        var headers : Dictionary<String, String>? = nil
+        
+        let token = Utils.load(Utils.tokenKey)
+        
+        if token.characters.count > 0 {
+            headers = ["Authorization" : "Token \(token)"]
+        }
+        
+        Alamofire.request(method, endpoint, headers : headers, parameters : parameters, encoding : .JSON)
             .responseJSON { response in
+                print (response)
+                print("request \(response.request) ")
+                print("headers \(response.request!.allHTTPHeaderFields)")
+                print("method \(response.request!.HTTPMethod)")
                 if let JSON = response.result.value {
                     onCompletion(JSON , nil)
                 } else {
                     onCompletion(nil, NSError(domain: "", code: 0, userInfo: nil))
                 }
         }
-
     }
     
     class func subtituteKeyInMethod(method: String, pathSegments: [(key: String, value: String)]) -> String? {
