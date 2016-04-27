@@ -48,7 +48,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.tag = passwordTag
         setupTextField(usernameTextField)
         setupTextField(passwordTextField)
-
     }
     
     func setupTextField(textfield : UITextField) {
@@ -65,7 +64,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         textfield.textColor = .whiteColor()
         
-        textfield.addTarget(self, action: "textDidChange:", forControlEvents: UIControlEvents.EditingChanged)
+        textfield.addTarget(self, action: #selector(textDidChange), forControlEvents: UIControlEvents.EditingChanged)
         
         textfield.delegate = self
     }
