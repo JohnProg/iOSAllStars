@@ -12,6 +12,8 @@ import UITextView_Placeholder
 
 class StarCommentViewController: UIViewController, UITextViewDelegate {
     
+    static let maxLength = 100
+    
     @IBOutlet weak var commentTextView: UITextView!
     
     var recommendDelegate: RecommendDelegate!
@@ -30,19 +32,22 @@ class StarCommentViewController: UIViewController, UITextViewDelegate {
         if let commentText = commentText {
             commentTextView.text = commentText
         }
-        commentTextView.placeholder = "Add a comment, up to 100 characters"
+        commentTextView.placeholder = "Add a comment, up to \(StarCommentViewController.maxLength) characters"
         commentTextView.delegate = self
     }
     
     //MARK: - UITextViewDelegate
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        let charactersCount = textView.text.characters.count + (text.characters.count - range.length)
+        if charactersCount > StarCommentViewController.maxLength && text != "\n" {
+            return false
+        }
         if text == "\n" {
             recommendDelegate.onCommentFilled(textView.text)
             return false
         }
         return true
     }
-    
     
 }
