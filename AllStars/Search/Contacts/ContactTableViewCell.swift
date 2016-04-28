@@ -16,6 +16,9 @@ class ContactTableViewCell: UITableViewCell {
     @IBOutlet weak var contactImage: UIImageView!
     @IBOutlet weak var contactImageLabel: UILabel!
     
+    @IBOutlet weak var scoreImage: UIImageView!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -45,5 +48,16 @@ class ContactTableViewCell: UITableViewCell {
             contactImageLabel.hidden = false
             contactImageLabel.text = contact.initials()
         }
+        
+        scoreImage.hidden = true
+        scoreLabel.hidden = true
+    }
+    
+    func setScoreInformation(image : UIImage?, score : String?){
+        scoreImage.hidden = false
+        scoreLabel.hidden = false
+        
+        scoreImage.image = image
+        scoreLabel.text = score
     }
 }

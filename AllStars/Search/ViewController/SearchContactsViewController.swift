@@ -12,7 +12,7 @@ class SearchContactsViewController: ContactsViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Search"
+        title = NSLocalizedString("Search", comment : "Search")
     }
     
     override func getContacts(onCompletition : ContactsHandler) {

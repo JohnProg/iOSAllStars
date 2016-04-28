@@ -12,6 +12,10 @@ typealias UserListServiceResponse = (Array<User>?, NSError?) -> Void
 typealias UserServiceResponse = (User?, NSError?) -> Void
 typealias UserCategoriesList = (categories: [Category]?, error: NSError?) -> Void
 
+enum TopKind {
+    case Score, Level, LastMonthScore, CurrentMonthScore
+}
+
 class UserService: BaseService {
 
     private static let employeeList = "/api/employee/list/"
@@ -62,10 +66,6 @@ class UserService: BaseService {
     }
     
     private static let employeeTopList = "/api/employee/list/top/"
-    
-    enum TopKind : String {
-        case Score, Level, LastMonthScore, CurrentMonthScore
-    }
     
     class func employeeTopList(kind : TopKind, quantity : String, onCompletition : UserListServiceResponse) {
         var kindString = ""

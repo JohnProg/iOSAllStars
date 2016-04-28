@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="upm-hh-nXp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="upm-hh-nXp">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Ranking View Controller-->
         <scene sceneID="ROa-bB-iuf">
             <objects>
-                <viewController id="gw8-vU-hw3" sceneMemberID="viewController">
+                <viewController id="gw8-vU-hw3" customClass="RankingViewController" customModule="AllStars" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jWD-ik-b5E"/>
                         <viewControllerLayoutGuide type="bottom" id="hMM-dl-o6T"/>
@@ -16,19 +15,7 @@
                     <view key="view" contentMode="scaleToFill" id="CyT-xG-8lG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Aq-87-aII">
-                                <rect key="frame" x="277" y="285" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="N0a-iS-ac1" kind="show" id="5KK-se-BJL"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="4Aq-87-aII" firstAttribute="centerX" secondItem="CyT-xG-8lG" secondAttribute="centerX" id="eDG-JF-gXH"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XJH-9n-NBT"/>
                 </viewController>
@@ -36,29 +23,11 @@
             </objects>
             <point key="canvasLocation" x="1456" y="743"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="cq0-s0-gio">
-            <objects>
-                <viewController id="N0a-iS-ac1" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Zdq-qd-igj"/>
-                        <viewControllerLayoutGuide type="bottom" id="qFp-6n-gPS"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LaO-o8-3eA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e3U-5Y-bol" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2165" y="743"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="JG0-AY-4ef">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="upm-hh-nXp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="dPM-Me-N5Y"/>
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="dPM-Me-N5Y"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Iz-DY-lBY">
