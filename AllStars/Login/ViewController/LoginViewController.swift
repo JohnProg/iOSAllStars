@@ -65,8 +65,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let mask = CALayer()
         mask.contents = UIImage(named: "Belatrix-isotipo")!.CGImage
         mask.contentsGravity = kCAGravityResizeAspect
+        mask.bounds = CGRect(x: 0, y: 0, width: 50, height: 50)
         mask.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        mask.position = background.center
+        mask.position = CGPoint(x: background.frame.size.width/2, y: background.frame.size.height/2 - mask.bounds.size.height/2)
+        print(mask.position)
         background.layer.mask = mask
         
         view.addSubview(background)
@@ -82,17 +84,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func animateMask(mask : CALayer) {
         let keyFrameAnimation = CAKeyframeAnimation(keyPath: "bounds")
         keyFrameAnimation.delegate = self
-        keyFrameAnimation.duration = 1
-        keyFrameAnimation.beginTime = CACurrentMediaTime() + 1 //add delay of 1 second
+        keyFrameAnimation.duration = 1.2
+        keyFrameAnimation.beginTime = CACurrentMediaTime() + 0.3 //add delay of 0.3 second
         let initalBounds = NSValue(CGRect: mask.bounds)
-        let secondBounds = NSValue(CGRect: CGRect(x: 0, y: 0, width: 90, height: 90))
-        let finalBounds = NSValue(CGRect: CGRect(x: 0, y: 0, width: 1500, height: 1500))
-        keyFrameAnimation.values = [initalBounds, secondBounds, finalBounds]
-        keyFrameAnimation.keyTimes = [0, 0.3, 1]
+        let secondBounds = NSValue(CGRect: CGRect(x: 0, y: 0, width: 30, height: 30))
+        let thirdBounds = NSValue(CGRect: CGRect(x: 0, y: 0, width: 90, height: 90))
+        let finalBounds = NSValue(CGRect: CGRect(x: 0, y: 0, width: 1000, height: 1000))
+        keyFrameAnimation.values = [initalBounds, secondBounds, thirdBounds, finalBounds]
+        keyFrameAnimation.keyTimes = [0, 0.2, 0.3, 1.2]
         keyFrameAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)]
         mask.addAnimation(keyFrameAnimation, forKey: "bounds")
     }
 
+    
     let offset = 15
     let textFieldHeight = 45
     
