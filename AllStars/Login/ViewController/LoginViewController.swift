@@ -33,7 +33,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         edgesForExtendedLayout = .None
-        navigationItem.title = "Login"
+
+        let titleView = UIImageView(image: UIImage(named: "Belatrix-isotipo"))
+        var frame = titleView.frame
+        frame.size = CGSize(width: 30, height: 30)
+        titleView.contentMode = .ScaleAspectFit
+        titleView.frame = frame
+        
+        navigationItem.titleView = titleView
         
         view.backgroundColor = Utils.mainColor
         setupViews()
