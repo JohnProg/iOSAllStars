@@ -30,13 +30,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    let imageSize = 30
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         edgesForExtendedLayout = .None
 
         let titleView = UIImageView(image: UIImage(named: "Belatrix-isotipo"))
         var frame = titleView.frame
-        frame.size = CGSize(width: 30, height: 30)
+        frame.size = CGSize(width: imageSize, height: imageSize)
         titleView.contentMode = .ScaleAspectFit
         titleView.frame = frame
         
