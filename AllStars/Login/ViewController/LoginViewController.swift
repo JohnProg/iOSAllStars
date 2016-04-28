@@ -44,12 +44,53 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         navigationItem.titleView = titleView
         
-        view.backgroundColor = Utils.mainColor
-        setupViews()
-        setupLoginButton()
-        loginButton.enabled = false
+        if Utils.load(Utils.tokenKey).characters.count > 0 {
+            let background = UIView(frame: view.frame)
+            background.backgroundColor = .whiteColor()
+            view.addSubview(background)
+            animatedLogin()
+        } else {
+            view.backgroundColor = Utils.mainColor
+            setupViews()
+            setupLoginButton()
+            loginButton.enabled = false
+            usernameTextField.becomeFirstResponder()
+        }
+    }
+
+    func animatedLogin() {
+        let background = UIView(frame: view.frame)
+        background.backgroundColor = Utils.mainColor
         
-        usernameTextField.becomeFirstResponder()
+        let mask = CALayer()
+        mask.contents = UIImage(named: "Belatrix-isotipo")!.CGImage
+        mask.contentsGravity = kCAGravityResizeAspect
+        mask.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        mask.position = background.center
+        background.layer.mask = mask
+        
+        view.addSubview(background)
+        animateMask(mask)
+    }
+    
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+        if flag == true {
+            self.performSegueWithIdentifier("login", sender: nil)
+        }
+    }
+    
+    func animateMask(mask : CALayer) {
+        let keyFrameAnimation = CAKeyframeAnimation(keyPath: "bounds")
+        keyFrameAnimation.delegate = self
+        keyFrameAnimation.duration = 1
+        keyFrameAnimation.beginTime = CACurrentMediaTime() + 1 //add delay of 1 second
+        let initalBounds = NSValue(CGRect: mask.bounds)
+        let secondBounds = NSValue(CGRect: CGRect(x: 0, y: 0, width: 90, height: 90))
+        let finalBounds = NSValue(CGRect: CGRect(x: 0, y: 0, width: 1500, height: 1500))
+        keyFrameAnimation.values = [initalBounds, secondBounds, finalBounds]
+        keyFrameAnimation.keyTimes = [0, 0.3, 1]
+        keyFrameAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)]
+        mask.addAnimation(keyFrameAnimation, forKey: "bounds")
     }
 
     let offset = 15

@@ -81,7 +81,7 @@
                         <outlet property="loginButton" destination="9Sx-M1-XNO" id="RGf-om-UDk"/>
                         <outlet property="passwordTextField" destination="S2v-eJ-Bsm" id="5dQ-mH-zzd"/>
                         <outlet property="usernameTextField" destination="c6w-lO-kMw" id="guA-2s-xxQ"/>
-                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="login" id="Cca-GU-zlT"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="login" modalTransitionStyle="crossDissolve" id="Cca-GU-zlT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bld-sr-6pY" userLabel="First Responder" sceneMemberID="firstResponder"/>
