@@ -128,11 +128,13 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
     func onCommentFilled(comment: String) {
         self.comment = comment
         commentLabel.text = comment
+        tableView.reloadData()
     }
     
     func onSubcategorySelected(subcategory: Category) {
         self.subcategory = subcategory
         categoryLabel.text = subcategory.name
+        tableView.reloadData()
     }
     
 }
