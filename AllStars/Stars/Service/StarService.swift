@@ -35,5 +35,26 @@ class StarService {
             }
         }
     }
+        
+    class func employeeStarList(employeeId : UInt, onCompletion: EmployeeStarResponse) {
+        let segments: [(key: String, value: String)] = [
+            (Constants.PathSegmentKeys.employeeId, String(employeeId))
+        ]
+        let url = BaseService.subtituteKeyInMethod(Constants.Methods.employeeStarList, pathSegments: segments)
+        
+        BaseService.makeRequest(url, method: .GET, parameters: nil) { (json: AnyObject?, error: NSError?) in
+            if error == nil {
+                guard let jsonDictionary = json as? NSDictionary else {
+                    return
+                }
+                guard let jsonStars = jsonDictionary["results"] as? [NSDictionary] else {
+                    return
+                }
+                onCompletion(employeeStar: EmployeeStar.parseEmployeeStars(jsonStars), error: nil)
+            } else {
+                onCompletion(employeeStar: nil, error: error)
+            }
+        }
+    }
     
 }

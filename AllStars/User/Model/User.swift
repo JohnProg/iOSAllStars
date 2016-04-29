@@ -23,6 +23,13 @@ class User : Contact {
     var isActive : Bool = true
     var lastLogin : String?
     
+    override var image: String? {
+        set {}
+        get {
+            return avatar
+        }
+    }
+    
     override var detail: String {
         set {}
         get {
@@ -36,6 +43,7 @@ class User : Contact {
             return ""
         }
     }
+    
     convenience init(pk : UInt?, username : String?, email : String?, firstName : String?, lastName : String?, level : UInt?, avatar : String?, score : UInt?, role : String?, skypeId : String?, lastMonthScore : String?, currentMonthScore : String?, categories : Array<AnyObject>?, isActive : Bool, lastLogin : String?) {
         self.init()
         self.pk = pk
@@ -54,7 +62,6 @@ class User : Contact {
         self.isActive = isActive
         self.lastLogin = lastLogin
     }
-    
 }
 
 //MARK: JSON Parsing

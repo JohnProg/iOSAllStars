@@ -14,32 +14,44 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
 
     var user : Contact! {
         didSet {
-            setupViews()
+            if hasLoadedUser {
+                setupViews()
+            }
         }
     }
-    
+    private var hasLoadedUser = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
+        var userId = ""
         if user == nil {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named : "more"), style: .Done, target: self, action: #selector(menuTapped))
             // get logged user
-            let userId = Utils.load(Utils.userIdKey)
-            
-            showLoadingIndicator()
-            UserService.employee(userId, onCompletition: { (user : User?, error : NSError?) in
-                self.hideLoadingIndicator()
-                if error == nil {
-                    self.user = user
-                }
-            })            
+            userId = Utils.load(Utils.userIdKey)
         } else {
+            if let safePk = (user as! User).pk {
+                userId = String(safePk)
+            }
             if !isCurrentUser() {
                 navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(giveStar))
             }
         }
+        if userId.characters.count > 0 {
+            showLoadingIndicator()
+            UserService.employee(userId, onCompletition: { (user : User?, error : NSError?) in
+                self.hasLoadedUser = true
+                self.hideLoadingIndicator()
+                if error == nil {
+                    self.user = user
+                }
+            })
+        }
     }
     
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//        hasLoadedUser = false
+//    }
     func isCurrentUser() -> Bool {
         guard let userKey = (user as! User).pk else{
             return false
@@ -137,7 +149,13 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         profileImage.layer.cornerRadius = 10
         profileImage.layer.masksToBounds = true
         
-        profileImage.image = UIImage(named: "profile")
+        if let userImage = user.image {
+            ImageLoader.sharedLoader.imageForUrl(userImage, completionHandler:{(image: UIImage?, url: String) in
+                profileImage.image = image
+            })
+        } else {
+            profileImage.image = UIImage(named: "profile")
+        }
         
         // calculate the profile imageview frame
         let profileImageFrame = CGRect(x: view.frame.origin.x + offset,
