@@ -37,11 +37,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         edgesForExtendedLayout = .None
         
         if Utils.load(Utils.tokenKey).characters.count > 0 {
-            navigationController?.navigationBarHidden = true
-            let background = UIView(frame: view.frame)
-            background.backgroundColor = .whiteColor()
-            view.addSubview(background)
-            animatedLogin()
+            self.performSegueWithIdentifier("login", sender: nil)
         } else {
             let titleView = UIImageView(image: UIImage(named: "Belatrix-isotipo"))
             var frame = titleView.frame
@@ -59,45 +55,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func animatedLogin() {
-        let background = UIView(frame: view.frame)
-        background.backgroundColor = Utils.mainColor
-        
-        let mask = CALayer()
-        mask.contents = UIImage(named: "Belatrix-isotipo")!.CGImage
-        mask.contentsGravity = kCAGravityResizeAspect
-        mask.bounds = CGRect(x: 0, y: 0, width: 50, height: 50)
-        mask.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        mask.position = CGPoint(x: background.frame.size.width/2, y: background.frame.size.height/2 - mask.bounds.size.height/2)
-        print(mask.position)
-        background.layer.mask = mask
-        
-        view.addSubview(background)
-        animateMask(mask)
-    }
-    
-    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        if flag == true {
-            self.performSegueWithIdentifier("login", sender: nil)
-        }
-    }
-    
-    func animateMask(mask : CALayer) {
-        let keyFrameAnimation = CAKeyframeAnimation(keyPath: "bounds")
-        keyFrameAnimation.delegate = self
-        keyFrameAnimation.duration = 1.2
-        keyFrameAnimation.beginTime = CACurrentMediaTime() + 0.3 //add delay of 0.3 second
-        let initalBounds = NSValue(CGRect: mask.bounds)
-        let secondBounds = NSValue(CGRect: CGRect(x: 0, y: 0, width: mask.bounds.width * 0.6, height: mask.bounds.height * 0.6))
-        let thirdBounds = NSValue(CGRect: CGRect(x: 0, y: 0, width: mask.bounds.width * 1.3, height: mask.bounds.height * 1.3))
-        let finalBounds = NSValue(CGRect: CGRect(x: 0, y: 0, width: view.bounds.width * 1.5, height: view.bounds.height * 1.5))
-        keyFrameAnimation.values = [initalBounds, secondBounds, thirdBounds, finalBounds]
-        keyFrameAnimation.keyTimes = [0, 0.2, 0.3, 1.2]
-        keyFrameAnimation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)]
-        mask.addAnimation(keyFrameAnimation, forKey: "bounds")
-    }
-
-    
     let offset = 15
     let textFieldHeight = 45
     
