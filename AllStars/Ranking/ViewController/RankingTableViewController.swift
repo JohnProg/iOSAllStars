@@ -74,7 +74,7 @@ class RankingTableViewController: ContactsViewController {
     
     override func selectedContact(contact : Contact) {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("profileMainView") as! ProfileTableViewController
+        let vc = storyboard.instantiateViewControllerWithIdentifier("profileMainView") as! ProfileViewController
         vc.user = contact
         self.navigationController?.pushViewController(vc, animated: true)
     }

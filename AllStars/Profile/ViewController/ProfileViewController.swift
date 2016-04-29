@@ -10,6 +10,8 @@ import UIKit
 
 class ProfileViewController: UIViewController, UIScrollViewDelegate {
 
+    static let starVC = "starVC"
+
     var user : Contact! {
         didSet {
             setupViews()
@@ -18,8 +20,9 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if user == nil {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named : "more"), style: .Done, target: self, action: "menuTapped")
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named : "more"), style: .Done, target: self, action: #selector(menuTapped))
             // get logged user
             let userId = Utils.load(Utils.userIdKey)
             
@@ -31,8 +34,18 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
                 }
             })            
         } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "giveStar")
+            if !isCurrentUser() {
+                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(giveStar))
+            }
         }
+    }
+    
+    func isCurrentUser() -> Bool {
+        guard let userKey = (user as! User).pk else{
+            return false
+        }
+        
+        return String(userKey) == Utils.load(Utils.userIdKey)
     }
     
     func menuTapped() {
@@ -56,7 +69,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     
     func giveStar() {
         let storyboard = UIStoryboard(name: "Stars", bundle: nil)
-        let starNavigationVC = storyboard.instantiateViewControllerWithIdentifier(ProfileTableViewController.starVC) as! UINavigationController
+        let starNavigationVC = storyboard.instantiateViewControllerWithIdentifier(ProfileViewController.starVC) as! UINavigationController
         let giveStarVC = starNavigationVC.childViewControllers.first as! GiveStarTableViewController
         giveStarVC.user = user as! User
         presentViewController(starNavigationVC, animated: true, completion: nil)
