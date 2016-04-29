@@ -126,20 +126,22 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         contentView.addSubview(profileView)
         
         self.title = user.firstName
-        if let navigationHeight = navigationController?.navigationBar.frame.height {
-            titleView = UIScrollView(frame: CGRect(x: 0,
-                                        y: 0,
-                                        width: view.frame.width,
-                                        height: navigationHeight))
-            
-            titleView.contentSize = CGSizeMake(0.0, navigationHeight * 2)
-            self.view.addSubview(titleView)
-            
-            let titleLabel = UILabel(frame: CGRect(x: 0, y: profileView.frame.height + offset / 3, width: titleView.frame.width, height: navigationHeight))
-            titleLabel.textAlignment = NSTextAlignment.Center
-            titleLabel.text = self.title
-            titleView.addSubview(titleLabel)
-            self.navigationItem.titleView = titleView
+        if isCurrentUser() {
+            if let navigationHeight = navigationController?.navigationBar.frame.height {
+                titleView = UIScrollView(frame: CGRect(x: 0,
+                    y: 0,
+                    width: view.frame.width,
+                    height: navigationHeight))
+                
+                titleView.contentSize = CGSizeMake(0.0, navigationHeight * 2)
+                self.view.addSubview(titleView)
+                
+                let titleLabel = UILabel(frame: CGRect(x: 0, y: profileView.frame.height + offset / 3, width: titleView.frame.width, height: navigationHeight))
+                titleLabel.textAlignment = NSTextAlignment.Center
+                titleLabel.text = self.title
+                titleView.addSubview(titleLabel)
+                self.navigationItem.titleView = titleView
+            }
         }
     }
 

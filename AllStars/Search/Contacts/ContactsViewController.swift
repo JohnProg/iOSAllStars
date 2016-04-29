@@ -114,6 +114,7 @@ class ContactsViewController: UITableViewController, UISearchResultsUpdating, UI
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        contactsSearchController.active = false
         var contact = contacts[indexPath.row]
         if contactsSearchController.active {
             contact = filteredContacts[indexPath.row]

@@ -32,6 +32,7 @@
 		5E495E541CB5AFB000E5A4D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E495E521CB5AFB000E5A4D9 /* LaunchScreen.storyboard */; };
 		5E495E5F1CB5AFB000E5A4D9 /* AllStarsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E495E5E1CB5AFB000E5A4D9 /* AllStarsTests.swift */; };
 		5E495E6A1CB5AFB100E5A4D9 /* AllStarsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E495E691CB5AFB100E5A4D9 /* AllStarsUITests.swift */; };
+		5E5230321CD3F6AC006A0B52 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5230311CD3F6AC006A0B52 /* BarView.swift */; };
 		5E5FCC731CBBF6DE0005501F /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FCC721CBBF6DE0005501F /* LoginService.swift */; };
 		5E5FCC751CBBFD200005501F /* UIViewController+LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FCC741CBBFD200005501F /* UIViewController+LoadingIndicatorView.swift */; };
 		5E5FCC7D1CBC038B0005501F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5FCC7C1CBC038B0005501F /* User.swift */; };
@@ -108,6 +109,7 @@
 		5E495E651CB5AFB000E5A4D9 /* AllStarsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AllStarsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E495E691CB5AFB100E5A4D9 /* AllStarsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStarsUITests.swift; sourceTree = "<group>"; };
 		5E495E6B1CB5AFB100E5A4D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E5230311CD3F6AC006A0B52 /* BarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarView.swift; path = Profile/BarView/BarView.swift; sourceTree = "<group>"; };
 		5E5FCC721CBBF6DE0005501F /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginService.swift; path = Login/Service/LoginService.swift; sourceTree = "<group>"; };
 		5E5FCC741CBBFD200005501F /* UIViewController+LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+LoadingIndicatorView.swift"; path = "Base/UIViewController+LoadingIndicatorView.swift"; sourceTree = "<group>"; };
 		5E5FCC7C1CBC038B0005501F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = User/Model/User.swift; sourceTree = "<group>"; };
@@ -312,6 +314,14 @@
 			path = AllStarsUITests;
 			sourceTree = "<group>";
 		};
+		5E5230331CD40713006A0B52 /* BarView */ = {
+			isa = PBXGroup;
+			children = (
+				5E5230311CD3F6AC006A0B52 /* BarView.swift */,
+			);
+			name = BarView;
+			sourceTree = "<group>";
+		};
 		5E5FCC711CBBF6BC0005501F /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +374,7 @@
 		5E7BAD861CB5BA3600AE3361 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				5E5230331CD40713006A0B52 /* BarView */,
 				5E0857041CB6B6A400AFDD24 /* Profile.storyboard */,
 				5E7BAD871CB5BA3E00AE3361 /* View */,
 				5E7BAD7C1CB5B57100AE3361 /* ViewController */,
@@ -676,6 +687,7 @@
 				3C1A30041CD25D7C00EE4C57 /* TabCollectionCell.swift in Sources */,
 				5E5FCC7D1CBC038B0005501F /* User.swift in Sources */,
 				3C1A30061CD25D7C00EE4C57 /* TabPageOption.swift in Sources */,
+				5E5230321CD3F6AC006A0B52 /* BarView.swift in Sources */,
 				B2FE3D621CD00FDF00E74BFC /* StarCommentViewController.swift in Sources */,
 				5EE334CF1CCFCEBF00006D70 /* ImageLoader.swift in Sources */,
 				3C1A30081CD25D7C00EE4C57 /* TabPageViewController.swift in Sources */,
