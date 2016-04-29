@@ -9,6 +9,7 @@
 import Foundation
 
 typealias GiveStar = (star: Star?, error: NSError?) -> Void
+typealias EmployeeStarResponse = (employeeStar : [EmployeeStar]?, error : NSError?) -> Void
 
 class StarService {
     

@@ -20,6 +20,7 @@ struct Constants {
         static let recommend = "/api/star/{\(PathSegmentKeys.fromEmployee)}/give/star/to/{\(PathSegmentKeys.toEmployee)}/"
         static let subcategoryList = "/api/category/{\(PathSegmentKeys.categoryId)}/subcategory/list"
         static let employeeCategoryList = "/api/employee/{\(PathSegmentKeys.employeeId)}/category/list"
+        static let employeeStarList = "/api/star/{\(PathSegmentKeys.employeeId)}/subcategory/list/"
     }
     
     struct PathSegmentKeys {

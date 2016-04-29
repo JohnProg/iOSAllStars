@@ -23,7 +23,7 @@ extension EmployeeStar {
         static let stars = "num_stars"
     }
     
-    class func parseEmployeeStar(json: [String: AnyObject]) -> EmployeeStar {
+    class func parseEmployeeStar(json: NSDictionary) -> EmployeeStar {
         let employeeStar = EmployeeStar()
         employeeStar.pk = json[Keys.pk] as? UInt
         employeeStar.name = json[Keys.name] as? String
@@ -31,7 +31,7 @@ extension EmployeeStar {
         return employeeStar
     }
     
-    class func parseEmployeeStars(json: [[String: AnyObject]]) -> [EmployeeStar] {
+    class func parseEmployeeStars(json: [NSDictionary]) -> [EmployeeStar] {
         var employeeStars = [EmployeeStar]()
         for employeeStar in json {
             employeeStars.append(EmployeeStar.parseEmployeeStar(employeeStar))

@@ -25,6 +25,7 @@
 		5E0857131CB6BACF00AFDD24 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0857121CB6BACF00AFDD24 /* Utils.swift */; };
 		5E0857171CB6BB1B00AFDD24 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0857161CB6BB1B00AFDD24 /* LoginViewController.swift */; };
 		5E20356A1CBBEFF10019DABE /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2035691CBBEFF10019DABE /* BaseService.swift */; };
+		5E34FBC41CD3B9A1004963C7 /* EmployeeStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E34FBC31CD3B9A1004963C7 /* EmployeeStar.swift */; };
 		5E495E481CB5AFB000E5A4D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E495E471CB5AFB000E5A4D9 /* AppDelegate.swift */; };
 		5E495E4F1CB5AFB000E5A4D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E495E4D1CB5AFB000E5A4D9 /* Main.storyboard */; };
 		5E495E511CB5AFB000E5A4D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E495E501CB5AFB000E5A4D9 /* Assets.xcassets */; };
@@ -94,6 +95,7 @@
 		5E0857121CB6BACF00AFDD24 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Extra/Utils.swift; sourceTree = "<group>"; };
 		5E0857161CB6BB1B00AFDD24 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Login/ViewController/LoginViewController.swift; sourceTree = "<group>"; };
 		5E2035691CBBEFF10019DABE /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseService.swift; path = Base/BaseService.swift; sourceTree = "<group>"; };
+		5E34FBC31CD3B9A1004963C7 /* EmployeeStar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeStar.swift; sourceTree = "<group>"; };
 		5E495E441CB5AFB000E5A4D9 /* AllStars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AllStars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E495E471CB5AFB000E5A4D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E495E4E1CB5AFB000E5A4D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 		B2C76F891CCFC1A7008AECFC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5E34FBC31CD3B9A1004963C7 /* EmployeeStar.swift */,
 				B2C76F8A1CCFC1B5008AECFC /* Star.swift */,
 			);
 			path = Model;
@@ -684,6 +687,7 @@
 				5EE334CA1CCFCEBF00006D70 /* Contact.swift in Sources */,
 				5EE334CE1CCFCEBF00006D70 /* ContactUtils.swift in Sources */,
 				5E20356A1CBBEFF10019DABE /* BaseService.swift in Sources */,
+				5E34FBC41CD3B9A1004963C7 /* EmployeeStar.swift in Sources */,
 				5E0857131CB6BACF00AFDD24 /* Utils.swift in Sources */,
 				5EE334CD1CCFCEBF00006D70 /* ContactTableViewCell.swift in Sources */,
 				B2C76F811CCEB2C2008AECFC /* CategoriesTableViewController.swift in Sources */,
