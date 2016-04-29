@@ -18,6 +18,7 @@
 		3C1A300E1CD25E2100EE4C57 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A300D1CD25E2100EE4C57 /* RankingViewController.swift */; };
 		3C1A30101CD2662200EE4C57 /* RankingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A300F1CD2662200EE4C57 /* RankingTableViewController.swift */; };
 		3C1A30171CD28ABD00EE4C57 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C1A30191CD28ABD00EE4C57 /* Localizable.strings */; };
+		3C1A301E1CD2C2D600EE4C57 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1A301D1CD2C2D600EE4C57 /* ProfileViewController.swift */; };
 		3CF89EEA1CC1771900BD9CD2 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF89EE91CC1771900BD9CD2 /* KeychainWrapper.swift */; };
 		5E0857051CB6B6A400AFDD24 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0857041CB6B6A400AFDD24 /* Profile.storyboard */; };
 		5E0857081CB6B73700AFDD24 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0857061CB6B73700AFDD24 /* ProfileTableViewController.swift */; };
@@ -87,6 +88,7 @@
 		3C1A30181CD28ABD00EE4C57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3C1A301B1CD28AF400EE4C57 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		3C1A301C1CD28AF400EE4C57 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3C1A301D1CD2C2D600EE4C57 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Profile/ViewController/ProfileViewController.swift; sourceTree = "<group>"; };
 		3CF89EE91CC1771900BD9CD2 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainWrapper.swift; path = Extra/KeychainWrapper.swift; sourceTree = "<group>"; };
 		5E0857041CB6B6A400AFDD24 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = Profile/Profile.storyboard; sourceTree = "<group>"; };
 		5E0857061CB6B73700AFDD24 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTableViewController.swift; path = Profile/ViewController/ProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				5E0857061CB6B73700AFDD24 /* ProfileTableViewController.swift */,
+				3C1A301D1CD2C2D600EE4C57 /* ProfileViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				5E5FCC871CBC0AA40005501F /* (null) in Sources */,
 				B2C76F841CCEB721008AECFC /* CategoryService.swift in Sources */,
 				B22419961CC97FAA00E28914 /* GiveStarTableViewController.swift in Sources */,
+				3C1A301E1CD2C2D600EE4C57 /* ProfileViewController.swift in Sources */,
 				5E5FCC7F1CBC03A90005501F /* UserService.swift in Sources */,
 				B2FE3D641CD0100800E74BFC /* Constants.swift in Sources */,
 				5E0857081CB6B73700AFDD24 /* ProfileTableViewController.swift in Sources */,

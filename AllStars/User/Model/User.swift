@@ -36,7 +36,7 @@ class User : Contact {
             return ""
         }
     }
-    convenience init(pk : UInt?, username : String?, email : String?, firstName : String?, lastName : String?, level : UInt, avatar : String?, score : UInt?, role : String?, skypeId : String?, lastMonthScore : String?, currentMonthScore : String?, categories : Array<AnyObject>?, isActive : Bool, lastLogin : String?) {
+    convenience init(pk : UInt?, username : String?, email : String?, firstName : String?, lastName : String?, level : UInt?, avatar : String?, score : UInt?, role : String?, skypeId : String?, lastMonthScore : String?, currentMonthScore : String?, categories : Array<AnyObject>?, isActive : Bool, lastLogin : String?) {
         self.init()
         self.pk = pk
         self.username = username
