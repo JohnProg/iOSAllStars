@@ -11,11 +11,13 @@ import UIKit
 class ProfileViewController: UIViewController, UIScrollViewDelegate {
 
     static let starVC = "starVC"
+    let maxStarsValue: UInt = 5
 
     var user : Contact! {
         didSet {
             if hasLoadedUser {
                 setupViews()
+                loadEmployeeStars()
             }
         }
     }
@@ -25,7 +27,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
        
         var userId = ""
         if user == nil {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named : "more"), style: .Done, target: self, action: #selector(menuTapped))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named : "more"), style: .Done, target: self, action: Selector("menuTapped"))
             // get logged user
             userId = Utils.load(Utils.userIdKey)
         } else {
@@ -33,7 +35,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
                 userId = String(safePk)
             }
             if !isCurrentUser() {
-                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(giveStar))
+                navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("giveStar"))
             }
         }
         if userId.characters.count > 0 {
@@ -48,16 +50,38 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated)
-//        hasLoadedUser = false
-//    }
     func isCurrentUser() -> Bool {
         guard let userKey = (user as! User).pk else{
             return false
         }
         
         return String(userKey) == Utils.load(Utils.userIdKey)
+    }
+    
+    func loadEmployeeStars() {
+        guard let userPk = (user as! User).pk else {
+            return
+        }
+        
+        StarService.employeeStarList(userPk) { (employeeStar : [EmployeeStar]?, error : NSError?) -> Void in
+            print(employeeStar)
+            let barView = BarView()
+            barView.maxValue = self.maxStarsValue
+            barView.frame = CGRect(x: 0, y: self.profileView.frame.height + self.profileView.frame.origin.y, width: self.profileView.frame.width, height: 400)
+            barView.colors = [UIColor.orangeColor().CGColor, UIColor(red: 252.0/255.0, green: 10.0/255.0, blue: 0.0, alpha: 1.0).CGColor]
+            barView.items = Array<BarElement>()
+            
+            for star in employeeStar! {
+                if (star.stars > self.maxStarsValue) {
+                    barView.maxValue = star.stars!
+                }
+                barView.items?.append(BarElement(title: star.name, value: star.stars!))
+            }
+            self.contentView.addSubview(barView)
+            
+            barView.showBars()
+            
+        }
     }
     
     func menuTapped() {
