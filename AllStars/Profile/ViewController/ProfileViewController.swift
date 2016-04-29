@@ -97,8 +97,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         if let navigationHeight = navigationController?.navigationBar.frame.height {
             let contentOffset : CGFloat = scrollView.contentOffset.y + navigationHeight + offset * 2
-            let frameOffset : CGFloat = profileView.frame.height + profileView.frame.origin.y + offset
-
+            let frameOffset : CGFloat = profileView.frame.height + profileView.frame.origin.y + offset / 2
             let contentnOffset:CGPoint = CGPointMake(0.0, min(contentOffset, frameOffset))
             titleView.setContentOffset(contentnOffset, animated: false)
         }
@@ -120,7 +119,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         
         // set the profile imageview
         let profileImage = UIImageView()
-        profileImage.layer.borderColor = UIColor.blackColor().CGColor
+        profileImage.layer.borderColor = UIColor.whiteColor().CGColor
         profileImage.layer.borderWidth = 1.5
         profileImage.layer.cornerRadius = 10
         profileImage.layer.masksToBounds = true
