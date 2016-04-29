@@ -48,10 +48,6 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated)
-//        hasLoadedUser = false
-//    }
     func isCurrentUser() -> Bool {
         guard let userKey = (user as! User).pk else{
             return false

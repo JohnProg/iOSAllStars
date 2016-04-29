@@ -112,6 +112,7 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
     // MARK: - TableViewDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.item {
         case 1:
             performSegueWithIdentifier(GiveStarTableViewController.commentSegue, sender: nil)
@@ -136,7 +137,7 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
     
 }
 
-protocol RecommendDelegate {
+protocol RecommendDelegate : class {
     
     func onCommentFilled(comment: String)
     func onSubcategorySelected(subcategory: Category)

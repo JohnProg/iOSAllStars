@@ -28,6 +28,7 @@ class UserService: BaseService {
                 onCompletition(nil, error)
             } else {
                 guard let jsonUser = (json as? NSDictionary)!["results"] as? Array<NSDictionary> else {
+                    onCompletition(nil, error)
                     return
                 }
                 onCompletition(User.parseUsers(jsonUser), nil)

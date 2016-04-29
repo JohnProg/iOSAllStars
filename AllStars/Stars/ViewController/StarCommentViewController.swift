@@ -16,14 +16,27 @@ class StarCommentViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var commentTextView: UITextView!
     
-    var recommendDelegate: RecommendDelegate!
+    weak var recommendDelegate: RecommendDelegate?
     var commentText: String?
-    
+    var commentEntered = false {
+        didSet {
+            doneButton?.enabled = commentEntered
+        }
+    }
+    var doneButton : UIBarButtonItem?
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        automaticallyAdjustsScrollViewInsets = false
         initViews()
+        doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(doneButtonTapped))
+        navigationItem.rightBarButtonItem = doneButton
+        commentEntered = commentTextView.text.characters.count > 0
+    }
+    
+    func doneButtonTapped() {
+        recommendDelegate?.onCommentFilled(commentTextView.text)
     }
     
     //MARK: - Private
@@ -34,6 +47,11 @@ class StarCommentViewController: UIViewController, UITextViewDelegate {
         }
         commentTextView.placeholder = "Add a comment, up to \(StarCommentViewController.maxLength) characters"
         commentTextView.delegate = self
+        commentTextView.becomeFirstResponder()
+    }
+
+    func textViewDidChange(textView: UITextView) {
+        commentEntered = textView.text.characters.count > 0
     }
     
     //MARK: - UITextViewDelegate
@@ -44,7 +62,9 @@ class StarCommentViewController: UIViewController, UITextViewDelegate {
             return false
         }
         if text == "\n" {
-            recommendDelegate.onCommentFilled(textView.text)
+            if commentEntered {
+                recommendDelegate?.onCommentFilled(textView.text)
+            }
             return false
         }
         return true
