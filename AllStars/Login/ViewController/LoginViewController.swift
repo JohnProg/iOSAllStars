@@ -100,7 +100,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         textfield.textColor = .whiteColor()
         
-        textfield.addTarget(self, action: #selector(textDidChange), forControlEvents: UIControlEvents.EditingChanged)
+        textfield.addTarget(self, action: Selector("textDidChange:"), forControlEvents: UIControlEvents.EditingChanged)
         
         textfield.delegate = self
     }
