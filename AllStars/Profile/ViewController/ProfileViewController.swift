@@ -173,13 +173,13 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, BarViewDele
         }
         
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), forControlEvents: .ValueChanged)
         contentView.addSubview(refreshControl)
         contentView.scrollEnabled = true
         contentView.alwaysBounceVertical = true
     }
     
-    func refresh() {
+    func refresh(refreshControl : UIRefreshControl) {
         var userId = ""
         if let safePk = (user as! User).pk {
             userId = String(safePk)
@@ -191,6 +191,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, BarViewDele
                 if error == nil {
                     self.user = user
                 }
+                refreshControl.endRefreshing()
             })
         }
     }
