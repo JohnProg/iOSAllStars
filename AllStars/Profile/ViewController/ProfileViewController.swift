@@ -11,6 +11,7 @@ import UIKit
 class ProfileViewController: UIViewController, UIScrollViewDelegate, BarViewDelegate {
 
     static let starVC = "starVC"
+    
     let maxStarsValue: UInt = 5
 
     var user : Contact! {
@@ -25,6 +26,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, BarViewDele
     var employeeStars : [EmployeeStar]?
     
     private var hasLoadedUser = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -61,6 +63,15 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, BarViewDele
         return String(userKey) == Utils.load(Utils.userIdKey)
     }
     
+    var barView : BarView? {
+        didSet {
+            var size = self.contentView.contentSize
+            let barHeight = employeeStars != nil ? CGFloat(employeeStars!.count) * barView!.viewsHeight + barView!.viewOffset : 0
+            size.height = size.height + barHeight
+            self.contentView.contentSize = size
+        }
+    }
+    
     func loadEmployeeStars() {
         guard let userPk = (user as! User).pk else {
             return
@@ -69,26 +80,29 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, BarViewDele
         StarService.employeeStarList(userPk) { (employeeStar : [EmployeeStar]?, error : NSError?) -> Void in
             print(employeeStar)
             self.employeeStars = employeeStar
-            let barView = BarView()
-            barView.delegate = self
-            barView.maxValue = self.maxStarsValue
-            let barHeight = employeeStar != nil ? CGFloat(employeeStar!.count) * barView.viewsHeight : 0
-            
-            barView.frame = CGRect(x: 0, y: self.profileView.frame.height + self.profileView.frame.origin.y, width: self.profileView.frame.width, height: barHeight)
-            barView.colors = [UIColor.orangeColor().CGColor, UIColor(red: 252.0/255.0, green: 10.0/255.0, blue: 0.0, alpha: 1.0).CGColor]
-            barView.items = Array<BarElement>()
-            
-            for star in employeeStar! {
-                if (star.stars > self.maxStarsValue) {
-                    barView.maxValue = star.stars!
-                }
-                barView.items?.append(BarElement(title: star.name, value: star.stars!))
-            }
-            self.contentView.addSubview(barView)
-            
-            barView.showBars()
-            
+            self.setupBarView(employeeStar)
         }
+    }
+    
+    func setupBarView(employeeStar : [EmployeeStar]?) {
+        barView = BarView()
+        barView?.delegate = self
+        barView?.maxValue = self.maxStarsValue
+        let barHeight = employeeStar != nil ? CGFloat(employeeStar!.count) * barView!.viewsHeight : 0
+        
+        barView?.frame = CGRect(x: 0, y: self.profileView.frame.height + self.profileView.frame.origin.y, width: self.profileView.frame.width, height: barHeight)
+        barView?.colors = [UIColor.orangeColor().CGColor, UIColor(red: 252.0/255.0, green: 10.0/255.0, blue: 0.0, alpha: 1.0).CGColor]
+        barView?.items = Array<BarElement>()
+        
+        for star in employeeStar! {
+            if (star.stars > self.maxStarsValue) {
+                barView?.maxValue = star.stars!
+            }
+            barView?.items?.append(BarElement(title: star.name, value: star.stars!))
+        }
+        self.contentView.addSubview(barView!)
+        
+        barView?.showBars()
     }
     
     func menuTapped() {
@@ -119,13 +133,20 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, BarViewDele
     }
     
     var titleView = UIScrollView()
+    
     var contentView = UIScrollView()
     
-    var profileView : UIView!
+    var profileView : UIView! {
+        didSet {
+            var size = self.contentView.contentSize
+            size.height = size.height + profileView.frame.height
+            self.contentView.contentSize = size
+        }
+    }
     
     func setupViews() {
         contentView = UIScrollView(frame: self.view.bounds)
-        contentView.contentSize = CGSizeMake(0.0, CGFloat.max)
+        contentView.contentSize = CGSizeMake(0.0, 0.0)
         contentView.delegate = self
         self.view.addSubview(contentView)
         
@@ -149,6 +170,28 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, BarViewDele
                 titleView.addSubview(titleLabel)
                 self.navigationItem.titleView = titleView
             }
+        }
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), forControlEvents: .ValueChanged)
+        contentView.addSubview(refreshControl)
+        contentView.scrollEnabled = true
+        contentView.alwaysBounceVertical = true
+    }
+    
+    func refresh() {
+        var userId = ""
+        if let safePk = (user as! User).pk {
+            userId = String(safePk)
+        }
+        if userId.characters.count > 0 {
+            contentView.removeFromSuperview()
+            UserService.employee(userId, onCompletition: { (user : User?, error : NSError?) in
+                self.hasLoadedUser = true
+                if error == nil {
+                    self.user = user
+                }
+            })
         }
     }
 
