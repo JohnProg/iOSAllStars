@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UIScrollViewDelegate {
+class ProfileViewController: UIViewController, UIScrollViewDelegate, BarViewDelegate {
 
     static let starVC = "starVC"
     let maxStarsValue: UInt = 5
@@ -21,6 +21,9 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
+    
+    var employeeStars : [EmployeeStar]?
+    
     private var hasLoadedUser = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,9 +68,13 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         
         StarService.employeeStarList(userPk) { (employeeStar : [EmployeeStar]?, error : NSError?) -> Void in
             print(employeeStar)
+            self.employeeStars = employeeStar
             let barView = BarView()
+            barView.delegate = self
             barView.maxValue = self.maxStarsValue
-            barView.frame = CGRect(x: 0, y: self.profileView.frame.height + self.profileView.frame.origin.y, width: self.profileView.frame.width, height: 400)
+            let barHeight = employeeStar != nil ? CGFloat(employeeStar!.count) * barView.viewsHeight : 0
+            
+            barView.frame = CGRect(x: 0, y: self.profileView.frame.height + self.profileView.frame.origin.y, width: self.profileView.frame.width, height: barHeight)
             barView.colors = [UIColor.orangeColor().CGColor, UIColor(red: 252.0/255.0, green: 10.0/255.0, blue: 0.0, alpha: 1.0).CGColor]
             barView.items = Array<BarElement>()
             
@@ -287,5 +294,13 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate {
         profileView.addSubview(bottomLine)
         
         return profileView
+    }
+    
+    //MARK - BarViewDelegate
+    func barViewTapped(index: Int) {
+        guard let star = employeeStars?[index] else {
+            return
+        }
+        print("selected star: \(star.name)")
     }
 }

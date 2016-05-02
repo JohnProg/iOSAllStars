@@ -9,6 +9,10 @@
 import UIKit
 import SnapKit
 
+protocol BarViewDelegate : class {
+    func barViewTapped(index : Int)
+}
+
 class BarView: UIView {
     var maxValue : UInt = 1
     var items : Array<BarElement>?
@@ -16,18 +20,27 @@ class BarView: UIView {
     var viewOffset : CGFloat = 10
     var viewsHeight : CGFloat = 30
     var fontSize = UIFont.systemFontOfSize(12)
+    weak var delegate : BarViewDelegate?
+    
+    private let initialTag = 1000
     
     func showBars() {
-        guard let safeItems = items else {
+        guard let safeItems = items where items!.count > 0 else {
             return
         }
         
         var y : CGFloat = viewsHeight / 2
-        for item in safeItems {
+        
+        for i in 0...safeItems.count - 1 {
+            let item = safeItems[i]
             
             let itemView = itemBarView(item)
             itemView.frame = CGRect(x: bounds.origin.x + viewOffset, y: bounds.origin.y + y, width: bounds.width - (bounds.origin.x + viewOffset) * 2, height: bounds.height)
             addSubview(itemView)
+            
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(barTapped(_:)))
+            itemView.addGestureRecognizer(tapGestureRecognizer)
+            itemView.tag = initialTag + i
             
             y += viewsHeight
         }
@@ -49,14 +62,19 @@ class BarView: UIView {
         barView.value = item.value
         barView.maxValue = self.maxValue
         
-        //        barView.frame = CGRect(x: labelView.bounds.origin.x + labelView.bounds.width + viewOffset / 2, y: containerView.bounds.height / 2.0 - containerView.bounds.origin.y - 2, width: bounds.width - labelView.bounds.origin.x - labelView.bounds.width - viewOffset * 2 , height: 2)
-        
         barView.frame = CGRect(x: labelView.bounds.origin.x, y: labelView.bounds.origin.y + 10, width: containerView.frame.width , height: 2)
         
         containerView.addSubview(barView)
         
         return containerView
     }
+    
+    func barTapped(tapGesture : UITapGestureRecognizer) {
+        if let indexTapped = tapGesture.view?.tag {
+            delegate?.barViewTapped(indexTapped - initialTag)
+        }
+    }
+    
 }
 
 class Bar : UIView {
