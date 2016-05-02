@@ -13,9 +13,9 @@ class Star {
     var pk: UInt?
     var date: String?
     var text: String?
-    var fromUserPk: UInt?
-    var toUserPk: UInt?
-    var categoryPk: UInt?
+    var fromUser: User?
+    var toUser: User?
+    var category: Category?
     var subcategoryPk: UInt?
     
 }
@@ -32,15 +32,34 @@ extension Star {
         static let subcategory = "subcategory"
     }
     
-    class func parseStar(json: [String: AnyObject]) -> Star {
+    class func parseStar(json: NSDictionary) -> Star {
         let star = Star()
         star.pk = json[Keys.pk] as? UInt
         star.date = json[Keys.date] as? String
         star.text = json[Keys.text] as? String
-        star.fromUserPk = json[Keys.fromUser] as? UInt
-        star.toUserPk = json[Keys.toUser] as? UInt
-        star.categoryPk = json[Keys.category] as? UInt
+        
+        if let jsonFromUser = json[Keys.fromUser] as? NSDictionary {
+            star.fromUser = User.parseJSON(jsonFromUser)
+        }
+        
+        if let jsonToUser = json[Keys.toUser] as? NSDictionary {
+            star.toUser = User.parseJSON(jsonToUser)
+        }
+        if let jsonCategory = json[Keys.category] as? NSDictionary {
+            star.category = Category.parseCategory(jsonCategory)
+        }
+        
         star.subcategoryPk = json[Keys.subcategory] as? UInt
         return star
+    }
+    
+    class func parseStars(json : [NSDictionary]) -> [Star] {
+        var stars = [Star]()
+        
+        for jsonStar in json {
+            stars.append(Star.parseStar(jsonStar))
+        }
+        
+        return stars
     }
 }

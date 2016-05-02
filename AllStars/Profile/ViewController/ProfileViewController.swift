@@ -78,7 +78,6 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, BarViewDele
         }
         
         StarService.employeeStarList(userPk) { (employeeStar : [EmployeeStar]?, error : NSError?) -> Void in
-            print(employeeStar)
             self.employeeStars = employeeStar
             self.setupBarView(employeeStar)
         }
@@ -340,11 +339,35 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, BarViewDele
         return profileView
     }
     
+    struct UserInfo {
+        static let UserId = "userId"
+        static let Star = "star"
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "stars" {
+            let destination = segue.destinationViewController as! ProfileStarsViewController
+            if sender is NSDictionary {
+                guard case let (star as EmployeeStar, userId as UInt) = (sender?[UserInfo.Star], sender?[UserInfo.UserId]) else {
+                    return
+                }
+                
+                destination.employeeStar = star
+                destination.userId = userId
+            }
+        }
+    }
+    
     //MARK - BarViewDelegate
     func barViewTapped(index: Int) {
         guard let star = employeeStars?[index] else {
             return
         }
-        print("selected star: \(star.name)")
+        
+        guard let userId = (user as? User)?.pk else {
+            return
+        }
+        
+        performSegueWithIdentifier("stars", sender: [UserInfo.UserId : userId, UserInfo.Star : star])
     }
 }

@@ -8,8 +8,9 @@
 
 import Foundation
 
-typealias GiveStar = (star: Star?, error: NSError?) -> Void
+typealias GiveStar = (succeed: Bool, error: NSError?) -> Void
 typealias EmployeeStarResponse = (employeeStar : [EmployeeStar]?, error : NSError?) -> Void
+typealias EmployeeStarSubcategoryResponse = (star: [Star]?, error: NSError?) -> Void
 
 class StarService {
     
@@ -28,10 +29,9 @@ class StarService {
         }
         BaseService.makeRequest(url, method: .POST, parameters: params) { (json: AnyObject?, error: NSError?) in
             if error == nil {
-                let star = Star.parseStar(json as! [String: AnyObject])
-                onCompletion(star: star, error: nil)
+                onCompletion(succeed: true, error: nil)
             } else {
-                onCompletion(star: nil, error: error)
+                onCompletion(succeed: false, error: error)
             }
         }
     }
@@ -53,6 +53,31 @@ class StarService {
                 onCompletion(employeeStar: EmployeeStar.parseEmployeeStars(jsonStars), error: nil)
             } else {
                 onCompletion(employeeStar: nil, error: error)
+            }
+        }
+    }
+    
+    class func employeeStarSubcategoryList(employeeId : UInt, subcategoryId : UInt, onCompletion: EmployeeStarSubcategoryResponse) {
+
+        let segments: [(key: String, value: String)] = [
+            (Constants.PathSegmentKeys.employeeId, String(employeeId)),
+            (Constants.PathSegmentKeys.subCategoryId, String(subcategoryId))
+            
+        ]
+        let url = BaseService.subtituteKeyInMethod(Constants.Methods.employeeStarSubcategoryList, pathSegments: segments)
+        BaseService.makeRequest(url, method: .GET, parameters: nil) { (json: AnyObject?, error: NSError?) in
+            if error == nil {
+                guard let jsonDictionary = json as? NSDictionary else {
+                    onCompletion(star: nil, error: NSError(domain: "", code: 1000, userInfo: nil))
+                    return
+                }
+                guard let jsonStars = jsonDictionary["results"] as? [NSDictionary] else {
+                    onCompletion(star: nil, error: NSError(domain: "", code: 1000, userInfo: nil))
+                    return
+                }
+                onCompletion(star: Star.parseStars(jsonStars), error: nil)
+            } else {
+                onCompletion(star: nil, error: error)
             }
         }
     }

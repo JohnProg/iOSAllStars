@@ -23,7 +23,6 @@ class UserService: BaseService {
     class func employeeList(onCompletition : UserListServiceResponse) {
         
         self.makeRequest(employeeList, method: .GET, parameters: nil) { (json : AnyObject?, error : NSError?) -> Void in
-            print(json)
             if error != nil {
                 onCompletition(nil, error)
             } else {
@@ -54,7 +53,6 @@ class UserService: BaseService {
     class func employee(employeeId : String, onCompletition : UserServiceResponse) {
         let employeeIdURL = employeeIdEndpoint + employeeId
         self.makeRequest(employeeIdURL, method: .GET, parameters: nil) { (json : AnyObject?, error : NSError?) in
-            print(json)
             if error != nil {
                 onCompletition(nil, error)
             } else {

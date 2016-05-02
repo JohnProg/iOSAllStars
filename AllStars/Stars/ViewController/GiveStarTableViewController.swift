@@ -97,7 +97,7 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
     
     @IBAction func donePressed(sender: UIBarButtonItem) {
         showLoadingIndicator()
-        StarService.giveStar(loggedInUserPk, toId: user.pk!, subcategory: subcategory!, comment: comment, onCompletion: { (star, error) in
+        StarService.giveStar(loggedInUserPk, toId: user.pk!, subcategory: subcategory!, comment: comment, onCompletion: { (succed, error) in
             self.hideLoadingIndicator()
             if error == nil {
                 self.dismissViewControllerAnimated(true, completion: nil)

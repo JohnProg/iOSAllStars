@@ -21,6 +21,7 @@ struct Constants {
         static let subcategoryList = "/api/category/{\(PathSegmentKeys.categoryId)}/subcategory/list"
         static let employeeCategoryList = "/api/employee/{\(PathSegmentKeys.employeeId)}/category/list"
         static let employeeStarList = "/api/star/{\(PathSegmentKeys.employeeId)}/subcategory/list/"
+        static let employeeStarSubcategoryList = "/api/star/{\(PathSegmentKeys.employeeId)}/subcategory/{\(PathSegmentKeys.subCategoryId)}/list/"
     }
     
     struct PathSegmentKeys {
@@ -28,6 +29,7 @@ struct Constants {
         static let toEmployee = "to_employee_id"
         static let categoryId = "category_id"
         static let employeeId = "employee_id"
+        static let subCategoryId = "subcategory_id"
     }
     
 }
