@@ -63,8 +63,11 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
     
     private func dismissOnTopVCAndEnableDoneButton() {
         navigationController?.popToRootViewControllerAnimated(true)
-        if subcategory != nil {
-            doneBarButtonItem.enabled = true
+        if let safeSubcategory = subcategory {
+            guard let safeCategory = safeSubcategory.parentCategory, commentRequired = safeCategory.commentRequired else {
+                return
+            }
+            doneBarButtonItem.enabled = !commentRequired || (comment != nil && !comment!.isEmpty)
         }
     }
     

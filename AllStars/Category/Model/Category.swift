@@ -12,8 +12,9 @@ class Category {
     
     var pk: UInt?
     var name: String?
-    var parentCategoryPk: UInt?
     var weight : UInt?
+    var commentRequired: Bool?
+    var parentCategory: Category?
 }
 
 extension Category {
@@ -22,6 +23,7 @@ extension Category {
         static let pk = "pk"
         static let name = "name"
         static let weight = "wight"
+        static let commentRequired = "comment_required"
     }
     
     class func parseCategory(json: NSDictionary) -> Category {
@@ -29,6 +31,7 @@ extension Category {
         category.pk = json[Keys.pk] as? UInt
         category.name = json[Keys.name] as? String
         category.weight = json[Keys.weight] as? UInt
+        category.commentRequired = json[Keys.commentRequired] as? Bool
         return category
     }
     
