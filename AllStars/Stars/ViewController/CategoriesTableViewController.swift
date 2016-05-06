@@ -16,7 +16,7 @@ class CategoriesTableViewController: UITableViewController {
     
     var parentCategory: Category?
     var categories: [Category]!
-    var recommendDelegate: RecommendDelegate!
+    var giveStarDelegate: GiveStarDelegate!
     var isSubcategory: Bool {
         get {
             return parentCategory != nil
@@ -33,7 +33,7 @@ class CategoriesTableViewController: UITableViewController {
                 let subcategoriesVC = self.storyboard?.instantiateViewControllerWithIdentifier(CategoriesTableViewController.categoriesTableVC) as! CategoriesTableViewController
                 subcategoriesVC.parentCategory = category
                 subcategoriesVC.categories = subcategories
-                subcategoriesVC.recommendDelegate = self.recommendDelegate
+                subcategoriesVC.giveStarDelegate = self.giveStarDelegate
                 self.navigationController?.pushViewController(subcategoriesVC, animated: true)
             }
         }
@@ -56,7 +56,7 @@ class CategoriesTableViewController: UITableViewController {
         let category = categories[indexPath.item]
         if isSubcategory {
             category.parentCategory = parentCategory!
-            recommendDelegate.onSubcategorySelected(category)
+            giveStarDelegate.onSubcategorySelected(category)
         } else {
             fetchAndDisplaySubcategories(category)
         }

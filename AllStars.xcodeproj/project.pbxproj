@@ -52,6 +52,7 @@
 		B22419961CC97FAA00E28914 /* GiveStarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22419951CC97FAA00E28914 /* GiveStarTableViewController.swift */; };
 		B224199A1CC98BD200E28914 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22419991CC98BD200E28914 /* Category.swift */; };
 		B224199D1CC9923E00E28914 /* StarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B224199C1CC9923E00E28914 /* StarService.swift */; };
+		B225CE5B1CDD374A00E985CF /* Keyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225CE5A1CDD374A00E985CF /* Keyword.swift */; };
 		B24F5F281CC974C2005AD337 /* Stars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B24F5F271CC974C2005AD337 /* Stars.storyboard */; };
 		B2C76F811CCEB2C2008AECFC /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C76F801CCEB2C2008AECFC /* CategoriesTableViewController.swift */; };
 		B2C76F841CCEB721008AECFC /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C76F831CCEB721008AECFC /* CategoryService.swift */; };
@@ -130,6 +131,7 @@
 		B22419951CC97FAA00E28914 /* GiveStarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveStarTableViewController.swift; sourceTree = "<group>"; };
 		B22419991CC98BD200E28914 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		B224199C1CC9923E00E28914 /* StarService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarService.swift; sourceTree = "<group>"; };
+		B225CE5A1CDD374A00E985CF /* Keyword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyword.swift; sourceTree = "<group>"; };
 		B24F5F271CC974C2005AD337 /* Stars.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Stars.storyboard; sourceTree = "<group>"; };
 		B2C76F801CCEB2C2008AECFC /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
 		B2C76F831CCEB721008AECFC /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 			children = (
 				5E34FBC31CD3B9A1004963C7 /* EmployeeStar.swift */,
 				B2C76F8A1CCFC1B5008AECFC /* Star.swift */,
+				B225CE5A1CDD374A00E985CF /* Keyword.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				B2C76F8B1CCFC1B5008AECFC /* Star.swift in Sources */,
 				5E5FCC731CBBF6DE0005501F /* LoginService.swift in Sources */,
 				5E5FCC871CBC0AA40005501F /* (null) in Sources */,
+				B225CE5B1CDD374A00E985CF /* Keyword.swift in Sources */,
 				B2C76F841CCEB721008AECFC /* CategoryService.swift in Sources */,
 				B22419961CC97FAA00E28914 /* GiveStarTableViewController.swift in Sources */,
 				3C1A301E1CD2C2D600EE4C57 /* ProfileViewController.swift in Sources */,
