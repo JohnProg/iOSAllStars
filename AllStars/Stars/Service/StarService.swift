@@ -21,7 +21,7 @@ class StarService {
         ]
         let url = BaseService.subtituteKeyInMethod(Constants.Methods.recommend, pathSegments: segments)
         var params: [String: AnyObject!] = [
-            Constants.JSONBodyKeys.category : subcategory.parentCategoryPk,
+            Constants.JSONBodyKeys.category : subcategory.parentCategory?.pk,
             Constants.JSONBodyKeys.subcategory : subcategory.pk
         ]
         if let comment = comment {

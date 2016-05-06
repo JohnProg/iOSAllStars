@@ -14,30 +14,24 @@ class CategoriesTableViewController: UITableViewController {
     static let categoryCell = "categoryCell"
     static let categoriesTableVC = "categoriesTableVC"
     
-    var categoryPk: UInt?
+    var parentCategory: Category?
     var categories: [Category]!
     var recommendDelegate: RecommendDelegate!
     var isSubcategory: Bool {
         get {
-            return categoryPk != nil
+            return parentCategory != nil
         }
-    }
-    
-    // MARK: - Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
     
     // MARK: - Private
     
-    private func fetchAndDisplaySubcategories(categoryPk: UInt) {
+    private func fetchAndDisplaySubcategories(category: Category) {
         showLoadingIndicator()
-        CategoryService.getSubcategoryList(categoryPk) { (subcategories, error) in
+        CategoryService.getSubcategoryList(category.pk!) { (subcategories, error) in
             self.hideLoadingIndicator()
             if error == nil {
                 let subcategoriesVC = self.storyboard?.instantiateViewControllerWithIdentifier(CategoriesTableViewController.categoriesTableVC) as! CategoriesTableViewController
-                subcategoriesVC.categoryPk = categoryPk
+                subcategoriesVC.parentCategory = category
                 subcategoriesVC.categories = subcategories
                 subcategoriesVC.recommendDelegate = self.recommendDelegate
                 self.navigationController?.pushViewController(subcategoriesVC, animated: true)
@@ -61,10 +55,10 @@ class CategoriesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let category = categories[indexPath.item]
         if isSubcategory {
-            category.parentCategoryPk = categoryPk!
+            category.parentCategory = parentCategory!
             recommendDelegate.onSubcategorySelected(category)
         } else {
-            fetchAndDisplaySubcategories(category.pk!)
+            fetchAndDisplaySubcategories(category)
         }
     }
     
