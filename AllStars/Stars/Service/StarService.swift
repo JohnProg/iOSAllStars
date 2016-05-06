@@ -14,15 +14,16 @@ typealias EmployeeStarSubcategoryResponse = (star: [Star]?, error: NSError?) -> 
 
 class StarService {
     
-    class func giveStar(fromId: UInt, toId: UInt, subcategory: Category, comment: String?, onCompletion: GiveStar) {
+    class func giveStar(fromId: UInt, toId: UInt, subcategory: Category, keyword: Keyword, comment: String?, onCompletion: GiveStar) {
         let segments: [(key: String, value: String)] = [
             (Constants.PathSegmentKeys.fromEmployee, String(fromId)),
             (Constants.PathSegmentKeys.toEmployee, String(toId))
         ]
-        let url = BaseService.subtituteKeyInMethod(Constants.Methods.recommend, pathSegments: segments)
+        let url = BaseService.subtituteKeysInMethod(Constants.Methods.recommend, pathSegments: segments)
         var params: [String: AnyObject!] = [
             Constants.JSONBodyKeys.category : subcategory.parentCategory?.pk,
-            Constants.JSONBodyKeys.subcategory : subcategory.pk
+            Constants.JSONBodyKeys.subcategory : subcategory.pk,
+            Constants.JSONBodyKeys.keyword : keyword.pk
         ]
         if let comment = comment {
             params[Constants.JSONBodyKeys.text] = comment
@@ -37,17 +38,16 @@ class StarService {
     }
         
     class func employeeStarList(employeeId : UInt, onCompletion: EmployeeStarResponse) {
-        let segments: [(key: String, value: String)] = [
-            (Constants.PathSegmentKeys.employeeId, String(employeeId))
-        ]
-        let url = BaseService.subtituteKeyInMethod(Constants.Methods.employeeStarList, pathSegments: segments)
-        
+        let segment = (Constants.PathSegmentKeys.employeeId, String(employeeId))
+        let url = BaseService.subtituteKeyInMethod(Constants.Methods.employeeStarList, pathSegment: segment)
         BaseService.makeRequest(url, method: .GET, parameters: nil) { (json: AnyObject?, error: NSError?) in
             if error == nil {
                 guard let jsonDictionary = json as? NSDictionary else {
+                    onCompletion(employeeStar: nil, error: NSError(domain: "", code: 1000, userInfo: nil))
                     return
                 }
                 guard let jsonStars = jsonDictionary["results"] as? [NSDictionary] else {
+                    onCompletion(employeeStar: nil, error: NSError(domain: "", code: 1000, userInfo: nil))
                     return
                 }
                 onCompletion(employeeStar: EmployeeStar.parseEmployeeStars(jsonStars), error: nil)
@@ -58,13 +58,12 @@ class StarService {
     }
     
     class func employeeStarSubcategoryList(employeeId : UInt, subcategoryId : UInt, onCompletion: EmployeeStarSubcategoryResponse) {
-
         let segments: [(key: String, value: String)] = [
             (Constants.PathSegmentKeys.employeeId, String(employeeId)),
             (Constants.PathSegmentKeys.subCategoryId, String(subcategoryId))
             
         ]
-        let url = BaseService.subtituteKeyInMethod(Constants.Methods.employeeStarSubcategoryList, pathSegments: segments)
+        let url = BaseService.subtituteKeysInMethod(Constants.Methods.employeeStarSubcategoryList, pathSegments: segments)
         BaseService.makeRequest(url, method: .GET, parameters: nil) { (json: AnyObject?, error: NSError?) in
             if error == nil {
                 guard let jsonDictionary = json as? NSDictionary else {

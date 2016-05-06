@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import UITextView_Placeholder
 
-class GiveStarTableViewController: UITableViewController, RecommendDelegate {
+class GiveStarTableViewController: UITableViewController, GiveStarDelegate {
     
     static let commentSegue = "commentSegue"
     static let categoriesSegue = "categoriesSegue"
@@ -18,6 +18,7 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var keywordLabel: UILabel!
     @IBOutlet weak var doneBarButtonItem: UIBarButtonItem!
     
     let loggedInUserPk = UInt(Utils.load(Utils.userIdKey))!
@@ -33,12 +34,19 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
             dismissOnTopVCAndEnableDoneButton()
         }
     }
+    var keyword: Keyword? {
+        didSet {
+            dismissOnTopVCAndEnableDoneButton()
+        }
+    }
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()
+        // TODO: delete this line when keyword is dinamically selected
+        keyword = Keyword(pk: 1, name: "PHP", numStars: 3)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -67,17 +75,18 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
             guard let commentRequired = safeSubcategory.parentCategory?.commentRequired else {
                 return
             }
-            doneBarButtonItem.enabled = !commentRequired || (comment != nil && !comment!.isEmpty)
+            let isCommentValid = !commentRequired || (comment != nil && !comment!.isEmpty)
+            doneBarButtonItem.enabled = keyword != nil && isCommentValid
         }
     }
     
     private func setUpCategoriesVC(categoriesVC: CategoriesTableViewController) {
-        categoriesVC.recommendDelegate = self
+        categoriesVC.giveStarDelegate = self
         categoriesVC.categories = categories
     }
     
     private func setUpCommentVC(commentVC: StarCommentViewController) {
-        commentVC.recommendDelegate = self
+        commentVC.giveStarDelegate = self
         if let comment = comment {
             if !comment.isEmpty {
                 commentVC.commentText = comment
@@ -100,7 +109,7 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
     
     @IBAction func donePressed(sender: UIBarButtonItem) {
         showLoadingIndicator()
-        StarService.giveStar(loggedInUserPk, toId: user.pk!, subcategory: subcategory!, comment: comment, onCompletion: { (succed, error) in
+        StarService.giveStar(loggedInUserPk, toId: user.pk!, subcategory: subcategory!, keyword: keyword!,comment: comment, onCompletion: { (succed, error) in
             self.hideLoadingIndicator()
             if error == nil {
                 self.dismissViewControllerAnimated(true, completion: nil)
@@ -140,11 +149,18 @@ class GiveStarTableViewController: UITableViewController, RecommendDelegate {
         tableView.reloadData()
     }
     
+    func onKeywordSelected(keyword: Keyword) {
+        self.keyword = keyword
+        keywordLabel.text = keyword.name
+        tableView.reloadData()
+    }
+    
 }
 
-protocol RecommendDelegate : class {
+protocol GiveStarDelegate : class {
     
     func onCommentFilled(comment: String)
     func onSubcategorySelected(subcategory: Category)
+    func onKeywordSelected(keyword: Keyword);
     
 }

@@ -13,6 +13,7 @@ struct Constants {
     struct JSONBodyKeys {
         static let category = "category"
         static let subcategory = "subcategory"
+        static let keyword = "keyword"
         static let text = "text"
     }
     

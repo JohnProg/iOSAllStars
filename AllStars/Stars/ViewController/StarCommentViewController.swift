@@ -16,7 +16,7 @@ class StarCommentViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var commentTextView: UITextView!
     
-    weak var recommendDelegate: RecommendDelegate?
+    weak var giveStarDelegate: GiveStarDelegate?
     var commentText: String?
     var commentEntered = false {
         didSet {
@@ -36,7 +36,7 @@ class StarCommentViewController: UIViewController, UITextViewDelegate {
     }
     
     func doneButtonTapped() {
-        recommendDelegate?.onCommentFilled(commentTextView.text)
+        giveStarDelegate?.onCommentFilled(commentTextView.text)
     }
     
     //MARK: - Private
@@ -63,7 +63,7 @@ class StarCommentViewController: UIViewController, UITextViewDelegate {
         }
         if text == "\n" {
             if commentEntered {
-                recommendDelegate?.onCommentFilled(textView.text)
+                giveStarDelegate?.onCommentFilled(textView.text)
             }
             return false
         }

@@ -45,7 +45,7 @@ class BaseService {
         }
     }
     
-    class func subtituteKeyInMethod(method: String, pathSegments: [(key: String, value: String)]) -> String? {
+    class func subtituteKeysInMethod(method: String, pathSegments: [(key: String, value: String)]) -> String? {
         var methodCopy = method
         for segment in pathSegments {
             if let result = BaseService.subtituteKeyInMethod(methodCopy, pathSegment: segment) {
